@@ -30,10 +30,12 @@ final class SettingsViewController: UIViewController {
     
     private func configure() {
         
-        heightSegmentedControl.selectedSegmentIndex = SettingsManager.settings.height == .meters ? 0 : 1
-        diameterSegmentedControl.selectedSegmentIndex = SettingsManager.settings.diameter == .meters ? 0 : 1
-        massSegmentedControl.selectedSegmentIndex = SettingsManager.settings.mass == .kg ? 0 : 1
-        payloadWeightsSegmentedControl.selectedSegmentIndex = SettingsManager.settings.payloadWeights == .kg ? 0 : 1
+        let settings = SettingsManager.shared.getSettings()
+        
+        heightSegmentedControl.selectedSegmentIndex = settings.height == .meters ? 0 : 1
+        diameterSegmentedControl.selectedSegmentIndex = settings.diameter == .meters ? 0 : 1
+        massSegmentedControl.selectedSegmentIndex = settings.mass == .kg ? 0 : 1
+        payloadWeightsSegmentedControl.selectedSegmentIndex = settings.payloadWeights == .kg ? 0 : 1
         
     }
     
@@ -43,12 +45,14 @@ final class SettingsViewController: UIViewController {
     }
     
     private func saveSettings() {
+        
         let settings = Settings(
             height: heightSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
             diameter: diameterSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
             mass: massSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb,
             payloadWeights: payloadWeightsSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb)
-        SettingsManager.settings = settings
+        
+        SettingsManager.shared.save(settings: settings)
     }
 }
 

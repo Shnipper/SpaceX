@@ -1,6 +1,6 @@
 import Foundation
 
-struct Rocket: Codable {
+struct Rocket: Decodable {
     
     let name: String
     let flickrImages: [String]
@@ -19,26 +19,26 @@ struct Rocket: Codable {
     let id: String
 }
 
-struct PayloadWeight: Codable {
+struct PayloadWeight: Decodable {
     
     let id: String
     let kg: Int
     let lb: Int
 }
 
-struct Length: Codable {
+struct Length: Decodable {
     
     let meters: Double?
     let feet: Double?
 }
 
-struct Mass: Codable {
+struct Mass: Decodable {
     
     let kg: Int
     let lb: Int
 }
 
-struct Stage: Codable {
+struct Stage: Decodable {
     
     let engines: Int
     let fuelAmountTons: Double

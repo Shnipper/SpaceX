@@ -1,18 +1,18 @@
 import Foundation
 
-struct Settings {
-    var height: UnitOfLength
-    var diameter: UnitOfLength
-    var mass: UnitOfWeight
-    var payloadWeights: UnitOfWeight
+struct Settings: Codable {
+    let height: UnitOfLength
+    let diameter: UnitOfLength
+    let mass: UnitOfWeight
+    let payloadWeights: UnitOfWeight
 }
 
-enum UnitOfWeight: String {
+enum UnitOfWeight: String, Codable {
     case kg = ", kg"
     case lb = ", lb"
 }
 
-enum UnitOfLength: String {
+enum UnitOfLength: String, Codable {
     case meters = ", m"
     case feet = ", ft"
 }
@@ -23,5 +23,3 @@ enum RocketParameters: String, CaseIterable  {
     case mass = "Масса"
     case payloadWeights = "Нагрузка"
 }
-
- 

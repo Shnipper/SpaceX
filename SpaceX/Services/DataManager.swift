@@ -1,9 +1,5 @@
 import Foundation
 
-protocol DataManagerProtocol {
-    
-}
-
 final class DataManager: DataManagerProtocol {
     
     static var rockets: [Rocket] = []

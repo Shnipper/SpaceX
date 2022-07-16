@@ -12,15 +12,18 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     private func setShortUnitLabel(for item: Int) {
+        
+        let settings = SettingsManager.shared.getSettings()
+        
         switch RocketParameters.allCases[item] {
         case .height:
-            shortUnitLabel.text = SettingsManager.settings.height.rawValue
+            shortUnitLabel.text = settings.height.rawValue
         case .diameter:
-            shortUnitLabel.text = SettingsManager.settings.diameter.rawValue
+            shortUnitLabel.text = settings.diameter.rawValue
         case .mass:
-            shortUnitLabel.text = SettingsManager.settings.mass.rawValue
+            shortUnitLabel.text = settings.mass.rawValue
         case .payloadWeights:
-            shortUnitLabel.text = SettingsManager.settings.payloadWeights.rawValue
+            shortUnitLabel.text = settings.payloadWeights.rawValue
         }
     }
 }

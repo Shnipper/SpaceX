@@ -1,6 +1,6 @@
 import UIKit
 
-class LaunchTableViewCell: UITableViewCell {
+final class LaunchTableViewCell: UITableViewCell {
 
     @IBOutlet var launchName: UILabel!
     @IBOutlet var launchDate: UILabel!

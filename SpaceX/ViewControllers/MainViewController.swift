@@ -114,24 +114,26 @@ final class MainViewController: UIViewController {
             guard let cell = collectionView.cellForItem(
                 at: IndexPath(item: index, section: 0)) as? CustomCollectionViewCell else { return }
             
+            let settings = SettingsManager.shared.getSettings()
+            
             switch cell.parameterLabel.text {
                 
             case RocketParameters.mass.rawValue:
-                if SettingsManager.settings.mass == .kg {
+                if settings.mass == .kg {
                     cell.unitLabel.text = "\(rocket.mass.kg)"
                 } else {
                     cell.unitLabel.text = "\(rocket.mass.lb)"
                 }
                 
             case RocketParameters.diameter.rawValue:
-                if SettingsManager.settings.diameter == .meters {
+                if settings.diameter == .meters {
                     cell.unitLabel.text = "\(rocket.diameter.meters ?? 0)"
                 }  else {
                     cell.unitLabel.text = "\(rocket.diameter.feet ?? 0)"
                 }
                 
             case RocketParameters.height.rawValue:
-                if SettingsManager.settings.height == .meters {
+                if settings.height == .meters {
                     cell.unitLabel.text = "\(rocket.height.meters ?? 0)"
                 }  else {
                     cell.unitLabel.text = "\(rocket.height.feet ?? 0)"
@@ -140,7 +142,7 @@ final class MainViewController: UIViewController {
             case RocketParameters.payloadWeights.rawValue:
                 for payloadWeight in rocket.payloadWeights {
                     if payloadWeight.id == "leo" {
-                        if SettingsManager.settings.payloadWeights == .kg {
+                        if settings.payloadWeights == .kg {
                             cell.unitLabel.text = "\(payloadWeight.kg)"
                         } else {
                             cell.unitLabel.text = "\(payloadWeight.lb)"
