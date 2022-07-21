@@ -17,6 +17,25 @@ struct Rocket: Decodable {
     let secondStage: Stage
     
     let id: String
+    
+    var firstFlightToPresent: String {
+        format(inputDate: firstFlight)
+    }
+
+    private func format(inputDate: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = inputFormatter.date(from: inputDate) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.locale = Locale(identifier: "ru_RU")
+            outputFormatter.setLocalizedDateFormatFromTemplate("MMMMddYYYY")
+            let outputDate = outputFormatter.string(from: date)
+            return outputDate
+        } else {
+            return inputDate
+        }
+    }
 }
 
 struct PayloadWeight: Decodable {

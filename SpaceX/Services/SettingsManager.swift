@@ -16,6 +16,7 @@ final class SettingsManager {
     func save(settings: Settings) {
         guard let encodedSettings = try? JSONEncoder().encode(settings) else { return }
         UserDefaults.standard.set(encodedSettings, forKey: key)
+        print("save")
     }
     
     func getSettings() -> Settings {
@@ -23,6 +24,20 @@ final class SettingsManager {
               let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
             return defaultSettings
         }
+        print("load")
         return settings
     }
+    
+//    var settings: Settings {
+//        get {
+//            guard let savedSettings = UserDefaults.standard.object(forKey: key) as? Data,
+//                  let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
+//                return defaultSettings
+//            }
+//            return settings
+//        } set {
+//            guard let encodedSettings = try? JSONEncoder().encode(newValue) else { return }
+//            UserDefaults.standard.set(encodedSettings, forKey: key)
+//        }
+//    }
 }

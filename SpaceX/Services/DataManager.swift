@@ -1,5 +1,14 @@
 import Foundation
 
+protocol DataManagerProtocol {
+    
+    static var rockets: [Rocket] { get set }
+    static var launches: [Launch] { get set }
+    static var images: [String? : Data] { get set }
+    
+    static func getCurrentLaunches(with rocketId: String) -> [Launch]
+}
+
 final class DataManager: DataManagerProtocol {
     
     static var rockets: [Rocket] = []

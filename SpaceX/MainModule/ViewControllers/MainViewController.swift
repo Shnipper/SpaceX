@@ -49,12 +49,20 @@ final class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let detailsVC = segue.destination as? DetailsViewController {
-            rocketImageView.isHidden = true
             detailsVC.rocketId = currentRocket.id
             detailsVC.navigationItem.title = currentRocket.name
+            
+            let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+            self.navigationItem.backBarButtonItem = backButton
+            
         } else if let settingsVC = segue.destination as? SettingsViewController {
             settingsVC.delegate = self
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        rocketImageView.isHidden = true
     }
     
     @objc private func pageControlValueChanged() {
@@ -182,7 +190,7 @@ extension MainViewController {
     
     private func setUpScrollView(with rocket: Rocket) {
         
-        firstFlightLabel.text = rocket.firstFlight
+        firstFlightLabel.text = rocket.firstFlightToPresent
         countryLabel.text = rocket.country
         costPerLaunchLabel.text = "\(rocket.costPerLaunch)"
         

@@ -1,12 +1,13 @@
 import UIKit
 
-class DetailsViewController: UITableViewController {
+final class DetailsViewController: UITableViewController {
     
     var rocketId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.barTintColor = .black
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

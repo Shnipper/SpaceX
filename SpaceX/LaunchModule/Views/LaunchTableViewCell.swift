@@ -16,6 +16,6 @@ final class LaunchTableViewCell: UITableViewCell {
             }
         }
         launchName.text = launch.name
-        launchDate.text = launch.dateUtc
+        launchDate.text = launch.dateToPresent
     }
 }
