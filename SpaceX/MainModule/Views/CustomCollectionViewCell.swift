@@ -6,14 +6,12 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet var parameterLabel: UILabel!
     @IBOutlet var shortUnitLabel: UILabel!
     
-    func configure(with item: Int) {
-        setShortUnitLabel(for: item)
+    func configure(with item: Int, and settings: Settings) {
+        setShortUnitLabel(for: item, with: settings)
         parameterLabel.text = RocketParameters.allCases[item].rawValue
     }
     
-    private func setShortUnitLabel(for item: Int) {
-        
-        let settings = SettingsManager.shared.getSettings()
+    private func setShortUnitLabel(for item: Int, with settings: Settings) {
         
         switch RocketParameters.allCases[item] {
         case .height:

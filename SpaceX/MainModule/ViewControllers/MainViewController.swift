@@ -118,6 +118,8 @@ final class MainViewController: UIViewController {
     
     private func setUpCollectionView(with rocket: Rocket) {
         
+        print("setUP")
+        
         for index in 0 ..< collectionView.numberOfItems(inSection: 0) {
             guard let cell = collectionView.cellForItem(
                 at: IndexPath(item: index, section: 0)) as? CustomCollectionViewCell else { return }
@@ -179,7 +181,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath
         ) as? CustomCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configure(with: indexPath.item)
+        let settings = SettingsManager.shared.getSettings()
+        cell.configure(with: indexPath.item, and: settings)
         return cell
     }
 }
