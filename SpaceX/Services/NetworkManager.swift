@@ -11,7 +11,16 @@ enum NetworkError: Error {
     case decodingError
 }
 
-final class NetworkManager {
+protocol NetworkManagerProtocol {
+
+    static func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
+    static func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
+    static func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
+    
+}
+
+
+final class NetworkManager: NetworkManagerProtocol {
     
     static func fetchRocketData(with completion: @escaping([Rocket]) -> Void) {
         guard let url = URL(string: Link.rocketDetails.rawValue) else { return }

@@ -6,6 +6,17 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet var parameterLabel: UILabel!
     @IBOutlet var shortUnitLabel: UILabel!
     
+    var parameterType: RocketParameters!
+
+//    init(type: RocketParameters) {
+//        self.type = type
+//        super.init()
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     func configure(with item: Int, and settings: Settings) {
         setShortUnitLabel(for: item, with: settings)
         parameterLabel.text = RocketParameters.allCases[item].rawValue
@@ -13,7 +24,7 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     
     private func setShortUnitLabel(for item: Int, with settings: Settings) {
         
-        switch RocketParameters.allCases[item] {
+        switch parameterType {
         case .height:
             shortUnitLabel.text = settings.height.rawValue
         case .diameter:
@@ -22,6 +33,8 @@ final class CustomCollectionViewCell: UICollectionViewCell {
             shortUnitLabel.text = settings.mass.rawValue
         case .payloadWeights:
             shortUnitLabel.text = settings.payloadWeights.rawValue
+        case .none:
+            break
         }
     }
 }

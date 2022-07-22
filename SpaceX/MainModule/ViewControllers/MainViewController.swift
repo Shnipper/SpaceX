@@ -48,7 +48,7 @@ final class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let detailsVC = segue.destination as? DetailsViewController {
+        if let detailsVC = segue.destination as? LaunchListViewController {
             detailsVC.rocketId = currentRocket.id
             detailsVC.navigationItem.title = currentRocket.name
             
@@ -116,49 +116,41 @@ final class MainViewController: UIViewController {
         }
     }
     
+    
     private func setUpCollectionView(with rocket: Rocket) {
-        
-        print("setUP")
-        
+
+        let settings = SettingsManager.shared.getSettings()
+
         for index in 0 ..< collectionView.numberOfItems(inSection: 0) {
+
             guard let cell = collectionView.cellForItem(
                 at: IndexPath(item: index, section: 0)) as? CustomCollectionViewCell else { return }
-            
-            let settings = SettingsManager.shared.getSettings()
-            
-            switch cell.parameterLabel.text {
+
+            switch cell.parameterType {
+
+            case .mass:
+                cell.unitLabel.text = settings.mass == .kg
+                    ? "\(rocket.mass.kg)"
+                    : "\(rocket.mass.lb)"
+
+            case .diameter:
+                cell.unitLabel.text = settings.diameter == .meters
+                    ? "\(rocket.diameter.meters)"
+                    : "\(rocket.diameter.feet)"
+
+
+            case .height:
+                cell.unitLabel.text = settings.height == .meters
+                    ? "\(rocket.height.meters)"
+                    : "\(rocket.height.feet)"
+
+            case .payloadWeights:
                 
-            case RocketParameters.mass.rawValue:
-                if settings.mass == .kg {
-                    cell.unitLabel.text = "\(rocket.mass.kg)"
-                } else {
-                    cell.unitLabel.text = "\(rocket.mass.lb)"
-                }
-                
-            case RocketParameters.diameter.rawValue:
-                if settings.diameter == .meters {
-                    cell.unitLabel.text = "\(rocket.diameter.meters ?? 0)"
-                }  else {
-                    cell.unitLabel.text = "\(rocket.diameter.feet ?? 0)"
-                }
-                
-            case RocketParameters.height.rawValue:
-                if settings.height == .meters {
-                    cell.unitLabel.text = "\(rocket.height.meters ?? 0)"
-                }  else {
-                    cell.unitLabel.text = "\(rocket.height.feet ?? 0)"
-                }
-                
-            case RocketParameters.payloadWeights.rawValue:
-                for payloadWeight in rocket.payloadWeights {
-                    if payloadWeight.id == "leo" {
-                        if settings.payloadWeights == .kg {
-                            cell.unitLabel.text = "\(payloadWeight.kg)"
-                        } else {
-                            cell.unitLabel.text = "\(payloadWeight.lb)"
-                        }
-                    }
-                }
+                guard let leoPayloadWeight = rocket.leoPayloadWeight else { return }
+                cell.unitLabel.text = settings.payloadWeights == .kg
+                    ? "\(leoPayloadWeight.kg)"
+                    : "\(leoPayloadWeight.lb)"
+    
             default: break
             }
         }
@@ -182,7 +174,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         ) as? CustomCollectionViewCell else { return UICollectionViewCell() }
         
         let settings = SettingsManager.shared.getSettings()
+        
+        cell.parameterType = RocketParameters.allCases[indexPath.item]
         cell.configure(with: indexPath.item, and: settings)
+        
         return cell
     }
 }

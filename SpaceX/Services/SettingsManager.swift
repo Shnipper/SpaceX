@@ -1,6 +1,12 @@
 import Foundation
 
-final class SettingsManager {
+protocol SettingsManagerProtocol {
+    static var shared: SettingsManager { get }
+    func save(settings: Settings)
+    func getSettings() -> Settings
+}
+
+final class SettingsManager: SettingsManagerProtocol {
     
     static let shared = SettingsManager()
     
@@ -15,8 +21,8 @@ final class SettingsManager {
     
     func save(settings: Settings) {
         guard let encodedSettings = try? JSONEncoder().encode(settings) else { return }
-        UserDefaults.standard.set(encodedSettings, forKey: key)
         print("save")
+        UserDefaults.standard.set(encodedSettings, forKey: key)
     }
     
     func getSettings() -> Settings {
@@ -24,7 +30,7 @@ final class SettingsManager {
               let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
             return defaultSettings
         }
-        print("load")
+        print(settings.mass)
         return settings
     }
     

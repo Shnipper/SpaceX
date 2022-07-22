@@ -1,6 +1,6 @@
 import UIKit
 
-final class DetailsViewController: UITableViewController {
+final class LaunchListViewController: UITableViewController {
     
     var rocketId: String?
 

@@ -16,7 +16,10 @@
 		A5B4A0EA2870787B0015A64A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0E92870787B0015A64A /* SettingsManager.swift */; };
 		A5B4A0EE2871C55A0015A64A /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0ED2871C55A0015A64A /* Launch.swift */; };
 		A5B4A0F1287202D20015A64A /* LaunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0EF287202D20015A64A /* LaunchTableViewCell.swift */; };
-		A5B4A0F4287B1C400015A64A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0F3287B1C400015A64A /* DetailsViewController.swift */; };
+		A5B4A0F4287B1C400015A64A /* LaunchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0F3287B1C400015A64A /* LaunchListViewController.swift */; };
+		A5B4A100288AB5890015A64A /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0FF288AB5880015A64A /* MainPresenter.swift */; };
+		A5B4A104288AC15B0015A64A /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */; };
+		A5B4A106288AC9DB0015A64A /* RocketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A105288AC9DB0015A64A /* RocketInfo.swift */; };
 		A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACA28538B790040724F /* AppDelegate.swift */; };
 		A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACC28538B790040724F /* SceneDelegate.swift */; };
 		A5EEEACF28538B790040724F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACE28538B790040724F /* MainViewController.swift */; };
@@ -35,7 +38,10 @@
 		A5B4A0E92870787B0015A64A /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		A5B4A0ED2871C55A0015A64A /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		A5B4A0EF287202D20015A64A /* LaunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTableViewCell.swift; sourceTree = "<group>"; };
-		A5B4A0F3287B1C400015A64A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		A5B4A0F3287B1C400015A64A /* LaunchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewController.swift; sourceTree = "<group>"; };
+		A5B4A0FF288AB5880015A64A /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		A5B4A105288AC9DB0015A64A /* RocketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfo.swift; sourceTree = "<group>"; };
 		A5EEEAC728538B790040724F /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EEEACA28538B790040724F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EEEACC28538B790040724F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			children = (
 				A5EEEACA28538B790040724F /* AppDelegate.swift */,
 				A5EEEACC28538B790040724F /* SceneDelegate.swift */,
+				A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -96,7 +103,7 @@
 		A5B4A0E12865AB7F0015A64A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A5B4A0F3287B1C400015A64A /* DetailsViewController.swift */,
+				A5B4A0F3287B1C400015A64A /* LaunchListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -112,6 +119,7 @@
 		A5B4A0F52883EF2B0015A64A /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				A5B4A0FE288AB55E0015A64A /* Presenters */,
 				A5B4A0F72883EF580015A64A /* Models */,
 				A5B4A0F82883EF810015A64A /* Views */,
 				A5B4A0F62883EF480015A64A /* ViewControllers */,
@@ -131,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0CF2860DAD20015A64A /* Rocket.swift */,
+				A5B4A105288AC9DB0015A64A /* RocketInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +193,14 @@
 				A5B4A0E12865AB7F0015A64A /* ViewControllers */,
 			);
 			path = LaunchModule;
+			sourceTree = "<group>";
+		};
+		A5B4A0FE288AB55E0015A64A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				A5B4A0FF288AB5880015A64A /* MainPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		A5EEEABE28538B790040724F = {
@@ -289,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B4A0F1287202D20015A64A /* LaunchTableViewCell.swift in Sources */,
+				A5B4A100288AB5890015A64A /* MainPresenter.swift in Sources */,
 				A5B4A0DC2863440D0015A64A /* Settings.swift in Sources */,
 				A5B4A0E8287078260015A64A /* DataManager.swift in Sources */,
 				A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */,
@@ -299,8 +317,10 @@
 				A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */,
 				A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */,
 				A5B4A0EA2870787B0015A64A /* SettingsManager.swift in Sources */,
-				A5B4A0F4287B1C400015A64A /* DetailsViewController.swift in Sources */,
+				A5B4A0F4287B1C400015A64A /* LaunchListViewController.swift in Sources */,
 				A5B4A0EE2871C55A0015A64A /* Launch.swift in Sources */,
+				A5B4A104288AC15B0015A64A /* ModuleBuilder.swift in Sources */,
+				A5B4A106288AC9DB0015A64A /* RocketInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

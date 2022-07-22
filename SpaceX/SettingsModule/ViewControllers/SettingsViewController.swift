@@ -52,6 +52,8 @@ final class SettingsViewController: UIViewController {
             mass: massSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb,
             payloadWeights: payloadWeightsSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb)
         
+        print(settings.mass)
+        
         SettingsManager.shared.save(settings: settings)
     }
 }
