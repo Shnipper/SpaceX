@@ -3,37 +3,40 @@ import Foundation
 protocol MainViewControllerProtocol: AnyObject {
     func set(rocketMainInfo: RocketMainInfo)
     func set(rocketDetailInfo: RocketDetailInfo)
-    
+    func set(rocketImage: Data)
+    func rocketChanged()
 }
 
 protocol MainPresenterProtocol: AnyObject {
     init(view: MainViewControllerProtocol,
          networkManager: NetworkManagerProtocol,
-         settingsManager: SettingsManager,
-         dataManager: DataManager)
+         settingsManager: SettingsManagerProtocol,
+         dataManager: DataManagerProtocol)
     
     func setRocketMainInfo()
     func setRocketDetailInfo(with settings: Settings)
+    func setRandomRocketImage()
+    func set(newRocket: Int)
 }
 
 class MainPresenter: MainPresenterProtocol {
     
     weak var view: MainViewControllerProtocol?
     let networkManager: NetworkManagerProtocol
-    let settingsManager: SettingsManager
-    let dataManager: DataManager
-    var rocket: Rocket?
+    let settingsManager: SettingsManagerProtocol
+    let dataManager: DataManagerProtocol
+    
+    private var rocket: Rocket?
     
     required init(view: MainViewControllerProtocol,
                   networkManager: NetworkManagerProtocol,
-                  settingsManager: SettingsManager,
-                  dataManager: DataManager) {
+                  settingsManager: SettingsManagerProtocol,
+                  dataManager: DataManagerProtocol) {
         
         self.view = view
         self.networkManager = networkManager
         self.settingsManager = settingsManager
         self.dataManager = dataManager
-        self.rocket = nil
     }
     
     func setRocketMainInfo() {
@@ -79,6 +82,31 @@ class MainPresenter: MainPresenterProtocol {
         )
         
         view?.set(rocketDetailInfo: rocketDetailInfo)
+    }
+    
+    func setRandomRocketImage() {
+        guard let randomImageStringURL = rocket?.flickrImages.randomElement() else { return }
+        
+        if let imageData = DataManager.images[randomImageStringURL] {
+            view?.set(rocketImage: imageData)
+            
+        } else {
+            NetworkManager.fetchImage(from: randomImageStringURL) { [weak self] result in
+                switch result {
+                case .success(let imageData):
+                    DataManager.images[randomImageStringURL] = imageData
+                    self?.view?.set(rocketImage: imageData)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func set(newRocket: Int) {
+        guard DataManager.rockets.count - 1 <= newRocket else { return }
+        rocket = DataManager.rockets[newRocket]
     }
     
     private func timeBurnSec(_ stage: Stage) -> String {

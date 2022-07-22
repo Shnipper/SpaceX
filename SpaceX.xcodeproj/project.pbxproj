@@ -20,6 +20,7 @@
 		A5B4A100288AB5890015A64A /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0FF288AB5880015A64A /* MainPresenter.swift */; };
 		A5B4A104288AC15B0015A64A /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */; };
 		A5B4A106288AC9DB0015A64A /* RocketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A105288AC9DB0015A64A /* RocketInfo.swift */; };
+		A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B4A107288B11F40015A64A /* MainViewController.xib */; };
 		A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACA28538B790040724F /* AppDelegate.swift */; };
 		A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACC28538B790040724F /* SceneDelegate.swift */; };
 		A5EEEACF28538B790040724F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACE28538B790040724F /* MainViewController.swift */; };
@@ -42,6 +43,7 @@
 		A5B4A0FF288AB5880015A64A /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		A5B4A105288AC9DB0015A64A /* RocketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfo.swift; sourceTree = "<group>"; };
+		A5B4A107288B11F40015A64A /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A5EEEAC728538B790040724F /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EEEACA28538B790040724F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EEEACC28538B790040724F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EEEACE28538B790040724F /* MainViewController.swift */,
+				A5B4A107288B11F40015A64A /* MainViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				A5EEEAD728538B7A0040724F /* LaunchScreen.storyboard in Resources */,
 				A5EEEAD428538B7A0040724F /* Assets.xcassets in Resources */,
 				A5EEEAD228538B790040724F /* Main.storyboard in Resources */,
+				A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
