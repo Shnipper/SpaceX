@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A59E877C288EDDF700D73E22 /* LaunchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E877B288EDDF700D73E22 /* LaunchInfo.swift */; };
+		A59E877F288F00E900D73E22 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E877E288F00E900D73E22 /* SettingsPresenter.swift */; };
 		A5B4A0CA285B920A0015A64A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0C9285B920A0015A64A /* SettingsViewController.swift */; };
 		A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CD285E185E0015A64A /* NetworkManager.swift */; };
 		A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CF2860DAD20015A64A /* Rocket.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A59E877B288EDDF700D73E22 /* LaunchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfo.swift; sourceTree = "<group>"; };
+		A59E877E288F00E900D73E22 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		A5B4A0C9285B920A0015A64A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A5B4A0CD285E185E0015A64A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5B4A0CF2860DAD20015A64A /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A59E877D288F00D400D73E22 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				A59E877E288F00E900D73E22 /* SettingsPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
 		A5B4A0DD286346B60015A64A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0ED2871C55A0015A64A /* Launch.swift */,
+				A59E877B288EDDF700D73E22 /* LaunchInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,17 +119,10 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		A5B4A0E12865AB7F0015A64A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A5B4A0F3287B1C400015A64A /* LaunchListViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		A5B4A0E22865AB8B0015A64A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5B4A0F3287B1C400015A64A /* LaunchListViewController.swift */,
 				A5B4A0EF287202D20015A64A /* LaunchTableViewCell.swift */,
 				A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */,
 			);
@@ -163,6 +169,7 @@
 		A5B4A0F92883EFEA0015A64A /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				A59E877D288F00D400D73E22 /* Presenters */,
 				A5B4A0FA2883EFF30015A64A /* Models */,
 				A5B4A0FB2883EFF90015A64A /* Views */,
 				A5B4A0FC2883EFFD0015A64A /* ViewControllers */,
@@ -199,7 +206,6 @@
 				A5B4A109288B2EC40015A64A /* Presenters */,
 				A5B4A0DE2865A9D20015A64A /* Models */,
 				A5B4A0E22865AB8B0015A64A /* Views */,
-				A5B4A0E12865AB7F0015A64A /* ViewControllers */,
 			);
 			path = LaunchModule;
 			sourceTree = "<group>";
@@ -332,10 +338,12 @@
 				A5EEEACF28538B790040724F /* MainViewController.swift in Sources */,
 				A5B4A10B288B2ED60015A64A /* LaunchListPresenter.swift in Sources */,
 				A5B4A0CA285B920A0015A64A /* SettingsViewController.swift in Sources */,
+				A59E877F288F00E900D73E22 /* SettingsPresenter.swift in Sources */,
 				A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */,
 				A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */,
 				A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */,
 				A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */,
+				A59E877C288EDDF700D73E22 /* LaunchInfo.swift in Sources */,
 				A5B4A0EA2870787B0015A64A /* SettingsManager.swift in Sources */,
 				A5B4A0F4287B1C400015A64A /* LaunchListViewController.swift in Sources */,
 				A5B4A0EE2871C55A0015A64A /* Launch.swift in Sources */,

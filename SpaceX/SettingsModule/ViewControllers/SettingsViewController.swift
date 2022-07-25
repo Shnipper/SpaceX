@@ -1,6 +1,19 @@
 import UIKit
 
-final class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
+    
+    let presenter: SettingsPresenterProtocol
+    
+    init(presenter: SettingsPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+        presenter.view = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var heightSegmentedControl: UISegmentedControl!

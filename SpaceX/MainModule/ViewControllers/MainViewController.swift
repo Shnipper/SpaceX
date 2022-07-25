@@ -26,10 +26,8 @@ final class MainViewController: UIViewController {
     @IBOutlet var secondTimeToBurn: UILabel!
     
     @IBAction func launchButtonPressed() {
-        
         let launchListVC = ModuleBuilder.createLaunchList(with: currentRocket.id, and: currentRocket.name)
         navigationController?.pushViewController(launchListVC, animated: true)
-    
     }
     
     private var currentRocket: Rocket {
@@ -110,10 +108,6 @@ final class MainViewController: UIViewController {
             DataManager.rockets = rockets
             self?.pageControl.numberOfPages = DataManager.rockets.count
             self?.configure()
-        }
-        
-        NetworkManager.fetchLaunchesData { launches in
-            DataManager.launches = launches
         }
     }
     

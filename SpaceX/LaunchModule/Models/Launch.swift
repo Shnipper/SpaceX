@@ -14,22 +14,4 @@ struct Launch: Decodable {
     let name: String
     let dateUtc: String
 
-    var dateToPresent: String {
-        format(inputedDate: dateUtc)
-    }
-    
-    private func format(inputedDate: String) -> String {
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
-        
-        if let date = inputFormatter.date(from: inputedDate) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.locale = Locale(identifier: "ru_RU")
-            outputFormatter.setLocalizedDateFormatFromTemplate("MMMMddYYYY")
-            let outputDate = outputFormatter.string(from: date)
-            return outputDate
-        } else {
-            return inputedDate
-        }
-    }
 }

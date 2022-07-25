@@ -3,37 +3,38 @@ import Foundation
 protocol LaunchListViewControllerProtocol: AnyObject {
     
     func updateUI()
+    init(presenter: LaunchListPresenterProtocol)
 }
 
 protocol LaunchListPresenterProtocol: AnyObject {
-    init(view: LaunchListViewControllerProtocol,
-         networkManager: NetworkManagerProtocol,
+    init(networkManager: NetworkManagerProtocol,
          dataManager: DataManagerProtocol,
          rocketID: String,
          rocketName: String)
     
+    var view: LaunchListViewControllerProtocol? { get set }
     var rocketID: String { get }
     var rocketName: String { get }
+    var launches: [Launch]? { get }
     
+    func getLaunchInfo(from index: Int) -> LaunchInfo?
 }
 
 class LaunchListPresenter: LaunchListPresenterProtocol {
-
-    weak var view: LaunchListViewControllerProtocol?
+    
     let networkManager: NetworkManagerProtocol
-    let dataManager: DataManagerProtocol
+    var dataManager: DataManagerProtocol
     let rocketID: String
     let rocketName: String
     
-    private var launches: [Launch]?
+    weak var view: LaunchListViewControllerProtocol?
+    var launches: [Launch]?
     
-    required init(view: LaunchListViewControllerProtocol,
-                  networkManager: NetworkManagerProtocol,
+    required init(networkManager: NetworkManagerProtocol,
                   dataManager: DataManagerProtocol,
                   rocketID: String,
                   rocketName: String) {
        
-        self.view = view
         self.networkManager = networkManager
         self.dataManager = dataManager
         self.rocketID = rocketID
@@ -42,18 +43,43 @@ class LaunchListPresenter: LaunchListPresenterProtocol {
         fetchLaunches()
     }
     
+    func getLaunchInfo(from index: Int) -> LaunchInfo? {
+        guard let launch = launches?[index] else { return nil }
+        
+        let launchInfo = LaunchInfo(launchName: launch.name,
+                                    launchDate: formatted(date: launch.dateUtc),
+                                    launchStatus: launch.success ?? false)
+        
+        return launchInfo
+    }
+    
     private func fetchLaunches() {
-        if !DataManager.launches.isEmpty {
-            launches = DataManager.getCurrentLaunches(with: rocketID)
-            view?.updateUI()
+        
+        if !dataManager.launches.isEmpty {
+            launches = dataManager.getCurrentLaunches(with: rocketID)
         } else {
-            NetworkManager.fetchLaunchesData { [weak self] launches in
-                DataManager.launches = launches
+            self.networkManager.fetchLaunchesData { [weak self] launches in
+                self?.dataManager.launches = launches
                 if let id = self?.rocketID {
-                    self?.launches = DataManager.getCurrentLaunches(with: id)
+                    self?.launches = self?.dataManager.getCurrentLaunches(with: id)
                     self?.view?.updateUI()
                 }
             }
+        }
+    }
+    
+    private func formatted(date: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
+        
+        if let tempDate = inputFormatter.date(from: date) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.locale = Locale(identifier: "ru_RU")
+            outputFormatter.setLocalizedDateFormatFromTemplate("MMMMddYYYY")
+            let outputDate = outputFormatter.string(from: tempDate)
+            return outputDate
+        } else {
+            return date
         }
     }
 }

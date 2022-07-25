@@ -12,14 +12,19 @@ enum NetworkError: Error {
 }
 
 protocol NetworkManagerProtocol {
-
+    
+    static var shared: NetworkManager { get }
     static func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
     static func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
-    static func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
+    func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
+//    func fetchData<T:Decodable>(by link: String,
+//                                with completion: @escaping(Result<T, NetworkError>) -> Void)
 }
 
 
 final class NetworkManager: NetworkManagerProtocol {
+    
+    static let shared = NetworkManager()
     
     static func fetchRocketData(with completion: @escaping([Rocket]) -> Void) {
         guard let url = URL(string: Link.rocketDetails.rawValue) else { return }
@@ -59,7 +64,7 @@ final class NetworkManager: NetworkManagerProtocol {
         }
     }
     
-    static func fetchLaunchesData(with completion: @escaping([Launch]) -> Void) {
+    func fetchLaunchesData(with completion: @escaping([Launch]) -> Void) {
         guard let url = URL(string: Link.launches.rawValue) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -81,8 +86,8 @@ final class NetworkManager: NetworkManagerProtocol {
         }.resume()
     }
     
-//    static func fetchData<T:Decodable>(by link: String,
-//                                       with completion: @escaping(Result<T, NetworkError>) -> Void) {
+//    func fetchData<T:Decodable>(by link: String,
+//                                with completion: @escaping(Result<T, NetworkError>) -> Void) {
 //
 //        guard let url = URL(string: link) else {
 //            completion(.failure(.invalidURL))

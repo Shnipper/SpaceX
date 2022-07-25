@@ -3,19 +3,22 @@ import Foundation
 protocol DataManagerProtocol {
     
     static var rockets: [Rocket] { get set }
-    static var launches: [Launch] { get set }
+    var launches: [Launch] { get set }
     static var images: [String? : Data] { get set }
+    static var shared: DataManager { get }
     
-    static func getCurrentLaunches(with rocketId: String) -> [Launch]
+    func getCurrentLaunches(with rocketId: String) -> [Launch]
 }
 
 final class DataManager: DataManagerProtocol {
     
+    static let shared = DataManager()
+    
     static var rockets: [Rocket] = []
-    static var launches: [Launch] = []
+    var launches: [Launch] = []
     static var images: [String? : Data] = [:]
     
-    static func getCurrentLaunches(with rocketId: String) -> [Launch] {
+    func getCurrentLaunches(with rocketId: String) -> [Launch] {
         var currentLaunches: [Launch] = []
         launches.forEach {
             if $0.rocket == rocketId {
@@ -26,4 +29,6 @@ final class DataManager: DataManagerProtocol {
         }
         return currentLaunches
     }
+    
+    private init() {}
 }
