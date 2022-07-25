@@ -144,10 +144,10 @@ final class MainViewController: UIViewController {
                     ? "\(rocket.height.meters)"
                     : "\(rocket.height.feet)"
 
-            case .payloadWeights:
+            case .payloadWeight:
                 
                 guard let leoPayloadWeight = rocket.leoPayloadWeight else { return }
-                cell.unitLabel.text = settings.payloadWeights == .kg
+                cell.unitLabel.text = settings.payloadWeight == .kg
                     ? "\(leoPayloadWeight.kg)"
                     : "\(leoPayloadWeight.lb)"
     
@@ -251,5 +251,52 @@ extension MainViewController: SettingsViewControllerDelegate {
         collectionView.reloadData()
         setUpCollectionView(with: currentRocket)
         setImage(with: currentRocket)
+    }
+}
+
+extension MainViewController: MainViewControllerProtocol {
+
+    func set(_ rocketMainInfo: RocketMainInfo) {
+        rocketNameLabel.text = rocketMainInfo.name
+        firstFlightLabel.text = rocketMainInfo.firstFlight
+        countryLabel.text = rocketMainInfo.country
+        costPerLaunchLabel.text = rocketMainInfo.costPerLaunch
+        firstEnginesCount.text = rocketMainInfo.firstStageEngines
+        firstFuel.text = rocketMainInfo.firstStageFuelAmountTons
+        firstTimeToBurn.text = rocketMainInfo.firstStageBurnTimeSec
+        secondEnginesCount.text = rocketMainInfo.secondStageEngines
+        secondFuel.text = rocketMainInfo.secondStageFuelAmountTons
+        secondTimeToBurn.text = rocketMainInfo.secondStageBurnTimeSec
+    }
+    
+    func set(_ rocketDetailInfo: RocketDetailInfo) {
+        
+        for index in 0 ..< collectionView.numberOfItems(inSection: 0) {
+
+            guard let cell = collectionView.cellForItem(
+                at: IndexPath(item: index, section: 0)) as? CustomCollectionViewCell else { return }
+      
+            switch cell.parameterType {
+            case .height:
+                cell.unitLabel.text  = rocketDetailInfo.height
+            case .diameter:
+                cell.unitLabel.text  = rocketDetailInfo.diameter
+            case .mass:
+                cell.unitLabel.text  = rocketDetailInfo.mass
+            case .payloadWeight:
+                cell.unitLabel.text  = rocketDetailInfo.payloadWeight
+            case .none:
+                break
+            }
+        }
+    }
+    
+    func setRocketImage(with data: Data) {
+        rocketImageView.image = UIImage(data: data)
+    }
+    
+    func rocketChanged() {
+//        presenter.set(newRocket: pageControl.currentPage))
+        
     }
 }

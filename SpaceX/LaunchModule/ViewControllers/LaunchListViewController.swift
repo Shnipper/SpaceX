@@ -8,6 +8,8 @@ final class LaunchListViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.barTintColor = .black
+        
+        tableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,5 +27,11 @@ final class LaunchListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
+    }
+}
+
+extension LaunchListViewController: LaunchListViewControllerProtocol {
+    func updateUI() {
+        tableView.reloadData()
     }
 }

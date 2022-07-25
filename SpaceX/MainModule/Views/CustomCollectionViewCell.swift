@@ -22,8 +22,8 @@ final class CustomCollectionViewCell: UICollectionViewCell {
             shortUnitLabel.text = settings.diameter.rawValue
         case .mass:
             shortUnitLabel.text = settings.mass.rawValue
-        case .payloadWeights:
-            shortUnitLabel.text = settings.payloadWeights.rawValue
+        case .payloadWeight:
+            shortUnitLabel.text = settings.payloadWeight.rawValue
         case .none:
             break
         }

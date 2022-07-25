@@ -1,9 +1,9 @@
 import Foundation
 
 protocol MainViewControllerProtocol: AnyObject {
-    func set(rocketMainInfo: RocketMainInfo)
-    func set(rocketDetailInfo: RocketDetailInfo)
-    func set(rocketImage: Data)
+    func set(_ rocketMainInfo: RocketMainInfo)
+    func set(_ rocketDetailInfo: RocketDetailInfo)
+    func setRocketImage(with data: Data)
     func rocketChanged()
 }
 
@@ -13,10 +13,10 @@ protocol MainPresenterProtocol: AnyObject {
          settingsManager: SettingsManagerProtocol,
          dataManager: DataManagerProtocol)
     
-    func setRocketMainInfo()
-    func setRocketDetailInfo(with settings: Settings)
-    func setRandomRocketImage()
-    func set(newRocket: Int)
+    func getRocketMainInfo()
+    func getRocketDetailInfo(with settings: Settings)
+    func getRandomRocketImage()
+    func get(newRocket: Int)
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -39,7 +39,7 @@ class MainPresenter: MainPresenterProtocol {
         self.dataManager = dataManager
     }
     
-    func setRocketMainInfo() {
+    func getRocketMainInfo() {
         guard let rocket = rocket else { return }
         
         let rocketMainInfo = RocketMainInfo(
@@ -55,10 +55,10 @@ class MainPresenter: MainPresenterProtocol {
             secondStageBurnTimeSec: timeBurnSec(rocket.secondStage)
         )
         
-        view?.set(rocketMainInfo: rocketMainInfo)
+        view?.set(rocketMainInfo)
     }
     
-    func setRocketDetailInfo(with settings: Settings) {
+    func getRocketDetailInfo(with settings: Settings) {
         guard let rocket = rocket else { return }
         
         let height = settings.height == .meters
@@ -70,32 +70,32 @@ class MainPresenter: MainPresenterProtocol {
         let mass = settings.mass == .kg
             ? rocket.mass.kg
             : rocket.mass.lb
-        let payloadWeight = settings.payloadWeights == .kg
+        let payloadWeight = settings.payloadWeight == .kg
             ? leo(rocket.payloadWeights)?.kg
             : leo(rocket.payloadWeights)?.lb
         
         let rocketDetailInfo = RocketDetailInfo(
-            height: "\(height)",
-            diameter: "\(diameter)",
-            mass: "\(mass)",
-            payloadWeight: "\(stringFrom(payloadWeight))"
+            height: "\(height)" + " ," + "\(settings.height.rawValue)",
+            diameter: "\(diameter)" + " ," + "\(settings.diameter.rawValue)",
+            mass: "\(mass)" + " ," + "\(settings.mass.rawValue)",
+            payloadWeight: "\(stringFrom(payloadWeight))" + " ," + "\(settings.payloadWeight.rawValue)"
         )
         
-        view?.set(rocketDetailInfo: rocketDetailInfo)
+        view?.set(rocketDetailInfo)
     }
     
-    func setRandomRocketImage() {
+    func getRandomRocketImage() {
         guard let randomImageStringURL = rocket?.flickrImages.randomElement() else { return }
         
         if let imageData = DataManager.images[randomImageStringURL] {
-            view?.set(rocketImage: imageData)
+            view?.setRocketImage(with: imageData)
             
         } else {
             NetworkManager.fetchImage(from: randomImageStringURL) { [weak self] result in
                 switch result {
                 case .success(let imageData):
                     DataManager.images[randomImageStringURL] = imageData
-                    self?.view?.set(rocketImage: imageData)
+                    self?.view?.setRocketImage(with: imageData)
                     
                 case .failure(let error):
                     print(error)
@@ -104,7 +104,7 @@ class MainPresenter: MainPresenterProtocol {
         }
     }
     
-    func set(newRocket: Int) {
+    func get(newRocket: Int) {
         guard DataManager.rockets.count - 1 <= newRocket else { return }
         rocket = DataManager.rockets[newRocket]
     }

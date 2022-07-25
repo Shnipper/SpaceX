@@ -14,7 +14,7 @@ final class SettingsManager: SettingsManagerProtocol {
     private let defaultSettings = Settings(height: .feet,
                                    diameter: .feet,
                                    mass: .lb,
-                                   payloadWeights: .lb)
+                                   payloadWeight: .lb)
     
     
     private init () {}

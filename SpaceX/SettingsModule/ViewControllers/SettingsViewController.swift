@@ -35,7 +35,7 @@ final class SettingsViewController: UIViewController {
         heightSegmentedControl.selectedSegmentIndex = settings.height == .meters ? 0 : 1
         diameterSegmentedControl.selectedSegmentIndex = settings.diameter == .meters ? 0 : 1
         massSegmentedControl.selectedSegmentIndex = settings.mass == .kg ? 0 : 1
-        payloadWeightsSegmentedControl.selectedSegmentIndex = settings.payloadWeights == .kg ? 0 : 1
+        payloadWeightsSegmentedControl.selectedSegmentIndex = settings.payloadWeight == .kg ? 0 : 1
         
     }
     
@@ -50,7 +50,7 @@ final class SettingsViewController: UIViewController {
             height: heightSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
             diameter: diameterSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
             mass: massSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb,
-            payloadWeights: payloadWeightsSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb)
+            payloadWeight: payloadWeightsSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb)
         
         print(settings.mass)
         

@@ -75,16 +75,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-hk-OXt">
-                                                            <rect key="frame" x="15" y="24" width="66" height="24"/>
+                                                            <rect key="frame" x="31.5" y="24" width="33" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB8-MA-bFe">
                                                                     <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-4j-Q7b">
-                                                                    <rect key="frame" x="33" y="0.0" width="33" height="24"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -110,7 +104,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="parameterLabel" destination="0E8-nF-nXc" id="dX8-C8-gXf"/>
-                                            <outlet property="shortUnitLabel" destination="YSC-4j-Q7b" id="PvK-KX-r2W"/>
                                             <outlet property="unitLabel" destination="DB8-MA-bFe" id="aA1-c2-MRv"/>
                                         </connections>
                                     </collectionViewCell>

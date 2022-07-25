@@ -21,6 +21,8 @@
 		A5B4A104288AC15B0015A64A /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */; };
 		A5B4A106288AC9DB0015A64A /* RocketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A105288AC9DB0015A64A /* RocketInfo.swift */; };
 		A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B4A107288B11F40015A64A /* MainViewController.xib */; };
+		A5B4A10B288B2ED60015A64A /* LaunchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A10A288B2ED60015A64A /* LaunchPresenter.swift */; };
+		A5B4A111288C179D0015A64A /* LaunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */; };
 		A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACA28538B790040724F /* AppDelegate.swift */; };
 		A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACC28538B790040724F /* SceneDelegate.swift */; };
 		A5EEEACF28538B790040724F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACE28538B790040724F /* MainViewController.swift */; };
@@ -44,6 +46,8 @@
 		A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		A5B4A105288AC9DB0015A64A /* RocketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfo.swift; sourceTree = "<group>"; };
 		A5B4A107288B11F40015A64A /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		A5B4A10A288B2ED60015A64A /* LaunchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
+		A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchTableViewCell.xib; sourceTree = "<group>"; };
 		A5EEEAC728538B790040724F /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EEEACA28538B790040724F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EEEACC28538B790040724F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0EF287202D20015A64A /* LaunchTableViewCell.swift */,
+				A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 		A5B4A0FD2883F0340015A64A /* LaunchModule */ = {
 			isa = PBXGroup;
 			children = (
+				A5B4A109288B2EC40015A64A /* Presenters */,
 				A5B4A0DE2865A9D20015A64A /* Models */,
 				A5B4A0E22865AB8B0015A64A /* Views */,
 				A5B4A0E12865AB7F0015A64A /* ViewControllers */,
@@ -202,6 +208,14 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0FF288AB5880015A64A /* MainPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		A5B4A109288B2EC40015A64A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				A5B4A10A288B2ED60015A64A /* LaunchPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -297,6 +311,7 @@
 			files = (
 				A5EEEAD728538B7A0040724F /* LaunchScreen.storyboard in Resources */,
 				A5EEEAD428538B7A0040724F /* Assets.xcassets in Resources */,
+				A5B4A111288C179D0015A64A /* LaunchTableViewCell.xib in Resources */,
 				A5EEEAD228538B790040724F /* Main.storyboard in Resources */,
 				A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */,
 			);
@@ -315,6 +330,7 @@
 				A5B4A0E8287078260015A64A /* DataManager.swift in Sources */,
 				A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */,
 				A5EEEACF28538B790040724F /* MainViewController.swift in Sources */,
+				A5B4A10B288B2ED60015A64A /* LaunchPresenter.swift in Sources */,
 				A5B4A0CA285B920A0015A64A /* SettingsViewController.swift in Sources */,
 				A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */,
 				A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */,
@@ -471,6 +487,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B346NGGCL4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -500,6 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B346NGGCL4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

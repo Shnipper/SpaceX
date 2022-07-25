@@ -16,7 +16,6 @@ protocol NetworkManagerProtocol {
     static func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
     static func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
     static func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
-    
 }
 
 
@@ -81,5 +80,32 @@ final class NetworkManager: NetworkManagerProtocol {
             }
         }.resume()
     }
+    
+//    static func fetchData<T:Decodable>(by link: String,
+//                                       with completion: @escaping(Result<T, NetworkError>) -> Void) {
+//
+//        guard let url = URL(string: link) else {
+//            completion(.failure(.invalidURL))
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            guard let data = data else {
+//                completion(.failure(.noData))
+//                return
+//            }
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let value = try decoder.decode(T.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(.success(value))
+//                }
+//            } catch {
+//                completion(.failure(.decodingError))
+//            }
+//        }.resume()
+//    }
 }
 

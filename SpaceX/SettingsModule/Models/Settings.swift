@@ -4,7 +4,7 @@ struct Settings: Codable {
     let height: UnitOfLength
     let diameter: UnitOfLength
     let mass: UnitOfWeight
-    let payloadWeights: UnitOfWeight
+    let payloadWeight: UnitOfWeight
 }
 
 enum UnitOfWeight: String, Codable {
@@ -21,5 +21,5 @@ enum RocketParameters: String, CaseIterable  {
     case height = "Высота"
     case diameter = "Диаметр"
     case mass = "Масса"
-    case payloadWeights = "Нагрузка"
+    case payloadWeight = "Нагрузка"
 }
