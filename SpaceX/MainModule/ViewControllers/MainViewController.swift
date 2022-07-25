@@ -25,6 +25,13 @@ final class MainViewController: UIViewController {
     @IBOutlet var secondFuel: UILabel!
     @IBOutlet var secondTimeToBurn: UILabel!
     
+    @IBAction func launchButtonPressed() {
+        
+        let launchListVC = ModuleBuilder.createLaunchList(with: currentRocket.id, and: currentRocket.name)
+        navigationController?.pushViewController(launchListVC, animated: true)
+    
+    }
+    
     private var currentRocket: Rocket {
         DataManager.rockets[pageControl.currentPage]
     }
@@ -32,12 +39,12 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customiseNavigationController()
         customizeScrollView()
         downloadData()
         pageControl.addTarget(self,
                               action: #selector(pageControlValueChanged),
                               for: .valueChanged)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,14 +55,7 @@ final class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let detailsVC = segue.destination as? LaunchListViewController {
-            detailsVC.rocketId = currentRocket.id
-            detailsVC.navigationItem.title = currentRocket.name
-            
-            let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-            self.navigationItem.backBarButtonItem = backButton
-            
-        } else if let settingsVC = segue.destination as? SettingsViewController {
+        if let settingsVC = segue.destination as? SettingsViewController {
             settingsVC.delegate = self
         }
     }
@@ -63,6 +63,7 @@ final class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         rocketImageView.isHidden = true
+        navigationController?.isNavigationBarHidden = false
     }
     
     @objc private func pageControlValueChanged() {
@@ -114,6 +115,13 @@ final class MainViewController: UIViewController {
         NetworkManager.fetchLaunchesData { launches in
             DataManager.launches = launches
         }
+    }
+    
+    private func customiseNavigationController() {
+        
+        navigationController?.navigationBar.barTintColor = .black
+        let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
     }
     
     

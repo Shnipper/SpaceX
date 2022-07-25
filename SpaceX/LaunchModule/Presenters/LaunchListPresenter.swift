@@ -1,34 +1,43 @@
 import Foundation
 
 protocol LaunchListViewControllerProtocol: AnyObject {
+    
     func updateUI()
 }
 
-protocol LaunchPresenterProtocol: AnyObject {
+protocol LaunchListPresenterProtocol: AnyObject {
     init(view: LaunchListViewControllerProtocol,
          networkManager: NetworkManagerProtocol,
          dataManager: DataManagerProtocol,
-         rocketID: String)
+         rocketID: String,
+         rocketName: String)
+    
+    var rocketID: String { get }
+    var rocketName: String { get }
+    
 }
 
-class LaunchPresenter: LaunchPresenterProtocol {
+class LaunchListPresenter: LaunchListPresenterProtocol {
 
     weak var view: LaunchListViewControllerProtocol?
     let networkManager: NetworkManagerProtocol
     let dataManager: DataManagerProtocol
     let rocketID: String
+    let rocketName: String
     
     private var launches: [Launch]?
     
     required init(view: LaunchListViewControllerProtocol,
                   networkManager: NetworkManagerProtocol,
                   dataManager: DataManagerProtocol,
-                  rocketID: String) {
-        
+                  rocketID: String,
+                  rocketName: String) {
+       
         self.view = view
         self.networkManager = networkManager
         self.dataManager = dataManager
         self.rocketID = rocketID
+        self.rocketName = rocketName
         
         fetchLaunches()
     }

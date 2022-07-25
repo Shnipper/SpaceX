@@ -2,36 +2,36 @@ import UIKit
 
 final class LaunchListViewController: UITableViewController {
     
-    var rocketId: String?
-
+    var presenter: LaunchListPresenterProtocol? {
+        didSet {
+            updateUI()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = .black
-        
-        tableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-    }
 
+        tableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 100
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rocketId = rocketId else { return 0 }
+        guard let rocketId = presenter?.rocketID else { return 0 }
         return DataManager.getCurrentLaunches(with: rocketId).count
-       
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "launchCell", for: indexPath) as? LaunchTableViewCell else { return UITableViewCell() }
 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? LaunchTableViewCell else { return UITableViewCell() }
         cell.configure(with: indexPath.row)
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
     }
 }
 
 extension LaunchListViewController: LaunchListViewControllerProtocol {
     func updateUI() {
+        navigationItem.title = presenter?.rocketName
         tableView.reloadData()
     }
 }

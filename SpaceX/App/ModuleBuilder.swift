@@ -1,12 +1,13 @@
 import UIKit
 
 protocol ModuleBuilderProtocol: AnyObject {
-    static func createMainModule() -> UIViewController
-    static func createLaunchListModule() -> UIViewController
-    static func createSettingsModule() -> UIViewController
+//    static func createMainModule() -> UIViewController
+    static func createLaunchList(with rocketID: String, and rocketName: String) -> UIViewController
+//    static func createSettingsModule() -> UIViewController
 }
 
-//class ModuleBuilder: ModuleBuilderProtocol {
+class ModuleBuilder: ModuleBuilderProtocol {
+    
 //    func createMainModule() -> UIViewController {
 //        let view = MainViewController()
 //        let networkManager = NetworkManager()
@@ -17,15 +18,22 @@ protocol ModuleBuilderProtocol: AnyObject {
 //        return view
 //
 //    }
-//
-//    func createLaunchListModule() -> UIViewController {
-//        let view = LaunchListViewController()
-//        let networkManager = NetworkManager()
-//        let dataManager = DataManager()
-//        let presenter = LaunchListPresenter()
-//        view.presenter = presenter
-//        return view
-//    }
+
+    static func createLaunchList(with rocketID: String, and rocketName: String) -> UIViewController {
+        let view = LaunchListViewController()
+        let networkManager = NetworkManager()
+        let dataManager = DataManager()
+        let presenter = LaunchListPresenter(
+            view: view,
+            networkManager: networkManager,
+            dataManager: dataManager,
+            rocketID: rocketID,
+            rocketName: rocketName)
+        
+        view.presenter = presenter
+        print("create")
+        return view
+    }
 
 //    func createSettingsModule() -> UIViewController {
 //        let view = SettingsViewController()
@@ -34,4 +42,4 @@ protocol ModuleBuilderProtocol: AnyObject {
 //        view.presenter = presenter
 //        return view
 //    }
-//}
+}
