@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="SpaceX" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="bQO-aI-PkE" id="UXL-8n-kuD"/>
+                <outlet property="diameterSegmentedControl" destination="jzm-n1-IGu" id="hN9-JR-PxY"/>
+                <outlet property="heightSegmentedControl" destination="hgF-e8-6tf" id="S3V-wg-baf"/>
+                <outlet property="massSegmentedControl" destination="bpJ-WI-FjE" id="4Ie-MC-zqf"/>
+                <outlet property="payloadWeightsSegmentedControl" destination="Oi8-d1-ZaK" id="xug-gO-OLc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="segmentedControls" destination="hgF-e8-6tf" collectionClass="NSMutableArray" id="9Ox-mu-3JG"/>
+                <outletCollection property="segmentedControls" destination="jzm-n1-IGu" collectionClass="NSMutableArray" id="uPs-Bw-ZMd"/>
+                <outletCollection property="segmentedControls" destination="bpJ-WI-FjE" collectionClass="NSMutableArray" id="rz8-F8-HWW"/>
+                <outletCollection property="segmentedControls" destination="Oi8-d1-ZaK" collectionClass="NSMutableArray" id="O15-5V-XqF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-Rf-n7k">
+                    <rect key="frame" x="16" y="108" width="343" height="172"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="nbn-pS-U5W">
+                            <rect key="frame" x="0.0" y="0.0" width="238" height="172"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Высота" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nk-aW-bbm">
+                                    <rect key="frame" x="0.0" y="0.0" width="238" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Диаметр" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnK-q4-42Q">
+                                    <rect key="frame" x="0.0" y="47" width="238" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Масса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-fL-nQr">
+                                    <rect key="frame" x="0.0" y="94" width="238" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Полезная нагрузка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByI-rv-dtv">
+                                    <rect key="frame" x="0.0" y="141" width="238" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="y7m-TP-A7P">
+                            <rect key="frame" x="238" y="0.0" width="105" height="172"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hgF-e8-6tf">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="32"/>
+                                    <color key="backgroundColor" red="0.058950655159999997" green="0.05096478015" blue="0.058660171929999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <segments>
+                                        <segment title="m"/>
+                                        <segment title="ft"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </segmentedControl>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jzm-n1-IGu">
+                                    <rect key="frame" x="0.0" y="47" width="105" height="32"/>
+                                    <color key="backgroundColor" red="0.058950655159999997" green="0.05096478015" blue="0.058660171929999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <segments>
+                                        <segment title="m"/>
+                                        <segment title="ft"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </segmentedControl>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bpJ-WI-FjE">
+                                    <rect key="frame" x="0.0" y="94" width="105" height="32"/>
+                                    <color key="backgroundColor" red="0.058950655159999997" green="0.05096478015" blue="0.058660171929999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <segments>
+                                        <segment title="kg"/>
+                                        <segment title="lb"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </segmentedControl>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Oi8-d1-ZaK">
+                                    <rect key="frame" x="0.0" y="141" width="105" height="32"/>
+                                    <color key="backgroundColor" red="0.058950655159999997" green="0.05096478015" blue="0.058660171929999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <segments>
+                                        <segment title="kg"/>
+                                        <segment title="lb"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </segmentedControl>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nR-GA-o4W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Настройки" id="rvi-MT-2We">
+                            <barButtonItem key="rightBarButtonItem" title="Назад" id="bQO-aI-PkE">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="-1" id="mqY-oR-CGq"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6fA-Rf-n7k" secondAttribute="trailing" constant="16" id="0iA-Nb-Ej4"/>
+                <constraint firstItem="6fA-Rf-n7k" firstAttribute="top" secondItem="5nR-GA-o4W" secondAttribute="bottom" constant="64" id="1Ki-lr-RgK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5nR-GA-o4W" secondAttribute="trailing" id="8IT-yy-1cP"/>
+                <constraint firstItem="5nR-GA-o4W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KeQ-vi-TtN"/>
+                <constraint firstItem="5nR-GA-o4W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gMS-EL-oCG"/>
+                <constraint firstItem="6fA-Rf-n7k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="yqC-YH-NdY"/>
+            </constraints>
+            <point key="canvasLocation" x="225" y="137"/>
+        </view>
+    </objects>
+</document>

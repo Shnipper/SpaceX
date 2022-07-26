@@ -2,8 +2,7 @@ import Foundation
 
 protocol SettingsManagerProtocol {
     static var shared: SettingsManager { get }
-    func save(settings: Settings)
-    func getSettings() -> Settings
+    var settings: Settings { get set }
 }
 
 final class SettingsManager: SettingsManagerProtocol {
@@ -19,31 +18,24 @@ final class SettingsManager: SettingsManagerProtocol {
     
     private init () {}
     
-    func save(settings: Settings) {
-        guard let encodedSettings = try? JSONEncoder().encode(settings) else { return }
-        print("save")
-        UserDefaults.standard.set(encodedSettings, forKey: key)
-    }
-    
-    func getSettings() -> Settings {
-        guard let savedSettings = UserDefaults.standard.object(forKey: key) as? Data,
-              let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
-            return defaultSettings
+    var settings: Settings {
+        get {
+            guard let savedSettings = UserDefaults.standard.object(forKey: key) as? Data,
+                  let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
+                return defaultSettings
+            }
+            print("load \(settings.height)")
+            print("load \(settings.diameter)")
+            print("load \(settings.mass)")
+            print("load \(settings.payloadWeight)")
+            return settings
+        } set {
+            print("save \(newValue.height)")
+            print("save \(newValue.diameter)")
+            print("save \(newValue.mass)")
+            print("save \(newValue.payloadWeight)")
+            guard let encodedSettings = try? JSONEncoder().encode(newValue) else { return }
+            UserDefaults.standard.set(encodedSettings, forKey: key)
         }
-        print(settings.mass)
-        return settings
     }
-    
-//    var settings: Settings {
-//        get {
-//            guard let savedSettings = UserDefaults.standard.object(forKey: key) as? Data,
-//                  let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
-//                return defaultSettings
-//            }
-//            return settings
-//        } set {
-//            guard let encodedSettings = try? JSONEncoder().encode(newValue) else { return }
-//            UserDefaults.standard.set(encodedSettings, forKey: key)
-//        }
-//    }
 }

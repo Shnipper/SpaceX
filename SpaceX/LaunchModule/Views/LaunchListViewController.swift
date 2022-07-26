@@ -17,10 +17,12 @@ final class LaunchListViewController: UITableViewController, LaunchListViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = presenter.rocketName
     }
     

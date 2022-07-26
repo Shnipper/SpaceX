@@ -1,12 +1,12 @@
 import UIKit
 
-final class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
+class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     
     let presenter: SettingsPresenterProtocol
     
-    init(presenter: SettingsPresenterProtocol) {
+    required init(presenter: SettingsPresenterProtocol) {
         self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: "SettingsViewController", bundle: nil)
         presenter.view = self
     }
     
@@ -14,7 +14,6 @@ final class SettingsViewController: UIViewController, SettingsViewControllerProt
         fatalError("init(coder:) has not been implemented")
     }
     
-
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var heightSegmentedControl: UISegmentedControl!
     @IBOutlet var diameterSegmentedControl: UISegmentedControl!
@@ -22,12 +21,10 @@ final class SettingsViewController: UIViewController, SettingsViewControllerProt
     @IBOutlet var payloadWeightsSegmentedControl: UISegmentedControl!
     @IBOutlet var segmentedControls: [UISegmentedControl]!
     
-    weak var delegate: SettingsViewControllerDelegate?
-    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,37 +35,25 @@ final class SettingsViewController: UIViewController, SettingsViewControllerProt
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         saveSettings()
-        delegate?.updateUI()
     }
     
     private func configure() {
+        heightSegmentedControl.selectedSegmentIndex = presenter.getHightIndex()
+        diameterSegmentedControl.selectedSegmentIndex = presenter.getDiameterIndex()
+        massSegmentedControl.selectedSegmentIndex = presenter.getMassIndex()
+        payloadWeightsSegmentedControl.selectedSegmentIndex = presenter.getPayloadWeightIndex()
+    }
+    
+    private func saveSettings() {
         
-        let settings = SettingsManager.shared.getSettings()
-        
-        heightSegmentedControl.selectedSegmentIndex = settings.height == .meters ? 0 : 1
-        diameterSegmentedControl.selectedSegmentIndex = settings.diameter == .meters ? 0 : 1
-        massSegmentedControl.selectedSegmentIndex = settings.mass == .kg ? 0 : 1
-        payloadWeightsSegmentedControl.selectedSegmentIndex = settings.payloadWeight == .kg ? 0 : 1
-        
+        presenter.saveSettings(heightSegmentedControl.selectedSegmentIndex,
+                               diameterSegmentedControl.selectedSegmentIndex,
+                               massSegmentedControl.selectedSegmentIndex,
+                               payloadWeightsSegmentedControl.selectedSegmentIndex)
     }
     
     private func customise(_ segmentedControl: UISegmentedControl) {
            segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
            segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
     }
-    
-    private func saveSettings() {
-        
-        let settings = Settings(
-            height: heightSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
-            diameter: diameterSegmentedControl.selectedSegmentIndex == 0 ? .meters : .feet,
-            mass: massSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb,
-            payloadWeight: payloadWeightsSegmentedControl.selectedSegmentIndex == 0 ? .kg : .lb)
-        
-        print(settings.mass)
-        
-        SettingsManager.shared.save(settings: settings)
-    }
 }
-
-

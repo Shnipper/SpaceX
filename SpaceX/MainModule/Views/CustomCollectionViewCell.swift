@@ -4,29 +4,12 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var unitLabel: UILabel!
     @IBOutlet var parameterLabel: UILabel!
-    @IBOutlet var shortUnitLabel: UILabel!
     
     var parameterType: RocketParameters!
     
     func configure(with item: Int, and settings: Settings) {
-        setShortUnitLabel(for: item, with: settings)
-        parameterLabel.text = RocketParameters.allCases[item].rawValue
-    }
-    
-    private func setShortUnitLabel(for item: Int, with settings: Settings) {
         
-        switch parameterType {
-        case .height:
-            shortUnitLabel.text = settings.height.rawValue
-        case .diameter:
-            shortUnitLabel.text = settings.diameter.rawValue
-        case .mass:
-            shortUnitLabel.text = settings.mass.rawValue
-        case .payloadWeight:
-            shortUnitLabel.text = settings.payloadWeight.rawValue
-        case .none:
-            break
-        }
+        parameterLabel.text = RocketParameters.allCases[item].rawValue
     }
 }
 

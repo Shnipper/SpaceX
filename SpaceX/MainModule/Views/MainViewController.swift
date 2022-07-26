@@ -30,12 +30,21 @@ final class MainViewController: UIViewController {
         navigationController?.pushViewController(launchListVC, animated: true)
     }
     
+    @IBAction func settingsButtonPressed() {
+        let settingsVC = ModuleBuilder.createSettingsModule()
+        navigationController?.present(settingsVC, animated: true)
+    }
+    
+    
     private var currentRocket: Rocket {
         DataManager.rockets[pageControl.currentPage]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "CustomCollectionViewCell")
         
         customiseNavigationController()
         customizeScrollView()
@@ -49,13 +58,6 @@ final class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         rocketImageView.isHidden = false
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let settingsVC = segue.destination as? SettingsViewController {
-            settingsVC.delegate = self
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,7 +123,7 @@ final class MainViewController: UIViewController {
     
     private func setUpCollectionView(with rocket: Rocket) {
 
-        let settings = SettingsManager.shared.getSettings()
+        let settings = SettingsManager.shared.settings
 
         for index in 0 ..< collectionView.numberOfItems(inSection: 0) {
 
@@ -147,12 +149,12 @@ final class MainViewController: UIViewController {
                     : "\(rocket.height.feet)"
 
             case .payloadWeight:
-                
+
                 guard let leoPayloadWeight = rocket.leoPayloadWeight else { return }
                 cell.unitLabel.text = settings.payloadWeight == .kg
                     ? "\(leoPayloadWeight.kg)"
                     : "\(leoPayloadWeight.lb)"
-    
+
             default: break
             }
         }
@@ -175,7 +177,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath
         ) as? CustomCollectionViewCell else { return UICollectionViewCell() }
         
-        let settings = SettingsManager.shared.getSettings()
+        let settings = SettingsManager.shared.settings
         
         cell.parameterType = RocketParameters.allCases[indexPath.item]
         cell.configure(with: indexPath.item, and: settings)

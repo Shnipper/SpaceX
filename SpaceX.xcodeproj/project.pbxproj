@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		A59E877C288EDDF700D73E22 /* LaunchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E877B288EDDF700D73E22 /* LaunchInfo.swift */; };
 		A59E877F288F00E900D73E22 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E877E288F00E900D73E22 /* SettingsPresenter.swift */; };
-		A5B4A0CA285B920A0015A64A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0C9285B920A0015A64A /* SettingsViewController.swift */; };
+		A59E8784288F059B00D73E22 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E8782288F059B00D73E22 /* SettingsViewController.swift */; };
+		A59E8785288F059B00D73E22 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8783288F059B00D73E22 /* SettingsViewController.xib */; };
+		A59E8787288FF20B00D73E22 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8786288FF20B00D73E22 /* MainViewController.xib */; };
+		A59E8789288FFA0600D73E22 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */; };
 		A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CD285E185E0015A64A /* NetworkManager.swift */; };
 		A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CF2860DAD20015A64A /* Rocket.swift */; };
 		A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */; };
@@ -22,13 +25,11 @@
 		A5B4A100288AB5890015A64A /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0FF288AB5880015A64A /* MainPresenter.swift */; };
 		A5B4A104288AC15B0015A64A /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */; };
 		A5B4A106288AC9DB0015A64A /* RocketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A105288AC9DB0015A64A /* RocketInfo.swift */; };
-		A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B4A107288B11F40015A64A /* MainViewController.xib */; };
 		A5B4A10B288B2ED60015A64A /* LaunchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A10A288B2ED60015A64A /* LaunchListPresenter.swift */; };
 		A5B4A111288C179D0015A64A /* LaunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */; };
 		A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACA28538B790040724F /* AppDelegate.swift */; };
 		A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACC28538B790040724F /* SceneDelegate.swift */; };
 		A5EEEACF28538B790040724F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEEACE28538B790040724F /* MainViewController.swift */; };
-		A5EEEAD228538B790040724F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EEEAD028538B790040724F /* Main.storyboard */; };
 		A5EEEAD428538B7A0040724F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EEEAD328538B7A0040724F /* Assets.xcassets */; };
 		A5EEEAD728538B7A0040724F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EEEAD528538B7A0040724F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -36,7 +37,10 @@
 /* Begin PBXFileReference section */
 		A59E877B288EDDF700D73E22 /* LaunchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfo.swift; sourceTree = "<group>"; };
 		A59E877E288F00E900D73E22 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		A5B4A0C9285B920A0015A64A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A59E8782288F059B00D73E22 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A59E8783288F059B00D73E22 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		A59E8786288FF20B00D73E22 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		A5B4A0CD285E185E0015A64A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5B4A0CF2860DAD20015A64A /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -49,14 +53,12 @@
 		A5B4A0FF288AB5880015A64A /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		A5B4A105288AC9DB0015A64A /* RocketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfo.swift; sourceTree = "<group>"; };
-		A5B4A107288B11F40015A64A /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A5B4A10A288B2ED60015A64A /* LaunchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListPresenter.swift; sourceTree = "<group>"; };
 		A5B4A110288C179D0015A64A /* LaunchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchTableViewCell.xib; sourceTree = "<group>"; };
 		A5EEEAC728538B790040724F /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EEEACA28538B790040724F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EEEACC28538B790040724F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A5EEEACE28538B790040724F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A5EEEAD128538B790040724F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5EEEAD328538B7A0040724F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5EEEAD628538B7A0040724F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5EEEAD828538B7A0040724F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,7 +105,6 @@
 		A5B4A0DF2865AB610015A64A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A5EEEAD028538B790040724F /* Main.storyboard */,
 				A5EEEAD528538B7A0040724F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -135,18 +136,8 @@
 				A5B4A0FE288AB55E0015A64A /* Presenters */,
 				A5B4A0F72883EF580015A64A /* Models */,
 				A5B4A0F82883EF810015A64A /* Views */,
-				A5B4A0F62883EF480015A64A /* ViewControllers */,
 			);
 			path = MainModule;
-			sourceTree = "<group>";
-		};
-		A5B4A0F62883EF480015A64A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A5EEEACE28538B790040724F /* MainViewController.swift */,
-				A5B4A107288B11F40015A64A /* MainViewController.xib */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A5B4A0F72883EF580015A64A /* Models */ = {
@@ -162,6 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */,
+				A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */,
+				A5EEEACE28538B790040724F /* MainViewController.swift */,
+				A59E8786288FF20B00D73E22 /* MainViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,7 +166,6 @@
 				A59E877D288F00D400D73E22 /* Presenters */,
 				A5B4A0FA2883EFF30015A64A /* Models */,
 				A5B4A0FB2883EFF90015A64A /* Views */,
-				A5B4A0FC2883EFFD0015A64A /* ViewControllers */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -188,16 +181,10 @@
 		A5B4A0FB2883EFF90015A64A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A59E8782288F059B00D73E22 /* SettingsViewController.swift */,
+				A59E8783288F059B00D73E22 /* SettingsViewController.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		A5B4A0FC2883EFFD0015A64A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A5B4A0C9285B920A0015A64A /* SettingsViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A5B4A0FD2883F0340015A64A /* LaunchModule */ = {
@@ -316,10 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5EEEAD728538B7A0040724F /* LaunchScreen.storyboard in Resources */,
+				A59E8789288FFA0600D73E22 /* CustomCollectionViewCell.xib in Resources */,
 				A5EEEAD428538B7A0040724F /* Assets.xcassets in Resources */,
 				A5B4A111288C179D0015A64A /* LaunchTableViewCell.xib in Resources */,
-				A5EEEAD228538B790040724F /* Main.storyboard in Resources */,
-				A5B4A108288B11F50015A64A /* MainViewController.xib in Resources */,
+				A59E8785288F059B00D73E22 /* SettingsViewController.xib in Resources */,
+				A59E8787288FF20B00D73E22 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,13 +319,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B4A0F1287202D20015A64A /* LaunchTableViewCell.swift in Sources */,
+				A59E8784288F059B00D73E22 /* SettingsViewController.swift in Sources */,
 				A5B4A100288AB5890015A64A /* MainPresenter.swift in Sources */,
 				A5B4A0DC2863440D0015A64A /* Settings.swift in Sources */,
 				A5B4A0E8287078260015A64A /* DataManager.swift in Sources */,
 				A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */,
 				A5EEEACF28538B790040724F /* MainViewController.swift in Sources */,
 				A5B4A10B288B2ED60015A64A /* LaunchListPresenter.swift in Sources */,
-				A5B4A0CA285B920A0015A64A /* SettingsViewController.swift in Sources */,
 				A59E877F288F00E900D73E22 /* SettingsPresenter.swift in Sources */,
 				A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */,
 				A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */,
@@ -355,14 +343,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A5EEEAD028538B790040724F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A5EEEAD128538B790040724F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A5EEEAD528538B7A0040724F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -500,7 +480,6 @@
 				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -530,7 +509,6 @@
 				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
