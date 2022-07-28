@@ -8,13 +8,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-    
-        let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: mainViewController)
+        window?.overrideUserInterfaceStyle = .dark
         
-        if #available(iOS 13.0, *) {
-            window?.overrideUserInterfaceStyle = .dark
-        }
+        let mainViewController = ModuleBuilder.createMainModule()
+        let navigationController = UINavigationController(rootViewController: mainViewController)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

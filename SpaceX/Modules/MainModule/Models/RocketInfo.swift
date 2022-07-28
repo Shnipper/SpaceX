@@ -14,9 +14,6 @@ struct RocketMainInfo {
 }
 
 struct RocketDetailInfo {
-    let height: String
-    let diameter: String
-    let mass: String
-    let payloadWeight: String
+    let parameterTitle: String
+    let unit: String
 }
-

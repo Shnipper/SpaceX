@@ -9,12 +9,12 @@ protocol LaunchListViewControllerProtocol: AnyObject {
 protocol LaunchListPresenterProtocol: AnyObject {
     init(networkManager: NetworkManagerProtocol,
          dataManager: DataManagerProtocol,
-         rocketID: String,
-         rocketName: String)
+         rocketID: String?,
+         rocketName: String?)
     
     var view: LaunchListViewControllerProtocol? { get set }
-    var rocketID: String { get }
-    var rocketName: String { get }
+    var rocketID: String? { get }
+    var rocketName: String? { get }
     var launches: [Launch]? { get }
     
     func getLaunchInfo(from index: Int) -> LaunchInfo?
@@ -24,16 +24,16 @@ class LaunchListPresenter: LaunchListPresenterProtocol {
     
     let networkManager: NetworkManagerProtocol
     var dataManager: DataManagerProtocol
-    let rocketID: String
-    let rocketName: String
+    let rocketID: String?
+    let rocketName: String?
     
     weak var view: LaunchListViewControllerProtocol?
     var launches: [Launch]?
     
     required init(networkManager: NetworkManagerProtocol,
                   dataManager: DataManagerProtocol,
-                  rocketID: String,
-                  rocketName: String) {
+                  rocketID: String?,
+                  rocketName: String?) {
        
         self.networkManager = networkManager
         self.dataManager = dataManager
@@ -55,10 +55,11 @@ class LaunchListPresenter: LaunchListPresenterProtocol {
     
     private func fetchLaunches() {
         
+        guard let rocketID = rocketID else { return }
         if !dataManager.launches.isEmpty {
             launches = dataManager.getCurrentLaunches(with: rocketID)
         } else {
-            self.networkManager.fetchLaunchesData { [weak self] launches in
+            networkManager.fetchLaunchesData { [weak self] launches in
                 self?.dataManager.launches = launches
                 if let id = self?.rocketID {
                     self?.launches = self?.dataManager.getCurrentLaunches(with: id)

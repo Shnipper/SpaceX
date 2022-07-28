@@ -2,9 +2,9 @@ import Foundation
 
 protocol DataManagerProtocol {
     
-    static var rockets: [Rocket] { get set }
+    var rockets: [Rocket] { get set }
     var launches: [Launch] { get set }
-    static var images: [String? : Data] { get set }
+    var images: [String? : Data] { get set }
     static var shared: DataManager { get }
     
     func getCurrentLaunches(with rocketId: String) -> [Launch]
@@ -14,9 +14,9 @@ final class DataManager: DataManagerProtocol {
     
     static let shared = DataManager()
     
-    static var rockets: [Rocket] = []
+    var rockets: [Rocket] = []
     var launches: [Launch] = []
-    static var images: [String? : Data] = [:]
+    var images: [String? : Data] = [:]
     
     func getCurrentLaunches(with rocketId: String) -> [Launch] {
         var currentLaunches: [Launch] = []

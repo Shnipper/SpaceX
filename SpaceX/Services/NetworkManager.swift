@@ -14,8 +14,8 @@ enum NetworkError: Error {
 protocol NetworkManagerProtocol {
     
     static var shared: NetworkManager { get }
-    static func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
-    static func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
+    func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
+    func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
     func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
 //    func fetchData<T:Decodable>(by link: String,
 //                                with completion: @escaping(Result<T, NetworkError>) -> Void)
@@ -26,7 +26,7 @@ final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     
-    static func fetchRocketData(with completion: @escaping([Rocket]) -> Void) {
+    func fetchRocketData(with completion: @escaping([Rocket]) -> Void) {
         guard let url = URL(string: Link.rocketDetails.rawValue) else { return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
@@ -46,7 +46,7 @@ final class NetworkManager: NetworkManagerProtocol {
         }.resume()
     }
     
-    static func fetchImage(from url: String?,
+    func fetchImage(from url: String?,
                            with completion: @escaping(Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else {
             completion(.failure(.invalidURL))

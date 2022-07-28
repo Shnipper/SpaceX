@@ -33,8 +33,9 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+        presenter.delegate.updateRocketDetailInfo()
         saveSettings()
+        super.viewWillDisappear(true)
     }
     
     private func configure() {

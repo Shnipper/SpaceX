@@ -12,10 +12,11 @@
 		A59E8784288F059B00D73E22 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E8782288F059B00D73E22 /* SettingsViewController.swift */; };
 		A59E8785288F059B00D73E22 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8783288F059B00D73E22 /* SettingsViewController.xib */; };
 		A59E8787288FF20B00D73E22 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8786288FF20B00D73E22 /* MainViewController.xib */; };
-		A59E8789288FFA0600D73E22 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */; };
+		A59E8789288FFA0600D73E22 /* UnitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59E8788288FFA0600D73E22 /* UnitCollectionViewCell.xib */; };
+		A59E878C28928F6700D73E22 /* Сoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E878B28928F6700D73E22 /* Сoordinator.swift */; };
 		A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CD285E185E0015A64A /* NetworkManager.swift */; };
 		A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0CF2860DAD20015A64A /* Rocket.swift */; };
-		A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */; };
+		A5B4A0DA28622E1D0015A64A /* UnitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0D928622E1D0015A64A /* UnitCollectionViewCell.swift */; };
 		A5B4A0DC2863440D0015A64A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0DB2863440D0015A64A /* Settings.swift */; };
 		A5B4A0E8287078260015A64A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0E7287078260015A64A /* DataManager.swift */; };
 		A5B4A0EA2870787B0015A64A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4A0E92870787B0015A64A /* SettingsManager.swift */; };
@@ -40,10 +41,11 @@
 		A59E8782288F059B00D73E22 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A59E8783288F059B00D73E22 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A59E8786288FF20B00D73E22 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		A59E8788288FFA0600D73E22 /* UnitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitCollectionViewCell.xib; sourceTree = "<group>"; };
+		A59E878B28928F6700D73E22 /* Сoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сoordinator.swift"; sourceTree = "<group>"; };
 		A5B4A0CD285E185E0015A64A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5B4A0CF2860DAD20015A64A /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
-		A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5B4A0D928622E1D0015A64A /* UnitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5B4A0DB2863440D0015A64A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A5B4A0E7287078260015A64A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5B4A0E92870787B0015A64A /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -83,6 +85,16 @@
 			path = Presenters;
 			sourceTree = "<group>";
 		};
+		A59E878A289289C900D73E22 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A5B4A0F52883EF2B0015A64A /* MainModule */,
+				A5B4A0F92883EFEA0015A64A /* SettingsModule */,
+				A5B4A0FD2883F0340015A64A /* LaunchModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		A5B4A0DD286346B60015A64A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 				A5EEEACA28538B790040724F /* AppDelegate.swift */,
 				A5EEEACC28538B790040724F /* SceneDelegate.swift */,
 				A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */,
+				A59E878B28928F6700D73E22 /* Сoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -152,8 +165,8 @@
 		A5B4A0F82883EF810015A64A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A5B4A0D928622E1D0015A64A /* CustomCollectionViewCell.swift */,
-				A59E8788288FFA0600D73E22 /* CustomCollectionViewCell.xib */,
+				A5B4A0D928622E1D0015A64A /* UnitCollectionViewCell.swift */,
+				A59E8788288FFA0600D73E22 /* UnitCollectionViewCell.xib */,
 				A5EEEACE28538B790040724F /* MainViewController.swift */,
 				A59E8786288FF20B00D73E22 /* MainViewController.xib */,
 			);
@@ -233,9 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B4A0E02865AB770015A64A /* App */,
-				A5B4A0F52883EF2B0015A64A /* MainModule */,
-				A5B4A0FD2883F0340015A64A /* LaunchModule */,
-				A5B4A0F92883EFEA0015A64A /* SettingsModule */,
+				A59E878A289289C900D73E22 /* Modules */,
 				A5B4A0DD286346B60015A64A /* Services */,
 				A5B4A0DF2865AB610015A64A /* Storyboards */,
 				A5EEEAD328538B7A0040724F /* Assets.xcassets */,
@@ -303,7 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5EEEAD728538B7A0040724F /* LaunchScreen.storyboard in Resources */,
-				A59E8789288FFA0600D73E22 /* CustomCollectionViewCell.xib in Resources */,
+				A59E8789288FFA0600D73E22 /* UnitCollectionViewCell.xib in Resources */,
 				A5EEEAD428538B7A0040724F /* Assets.xcassets in Resources */,
 				A5B4A111288C179D0015A64A /* LaunchTableViewCell.xib in Resources */,
 				A59E8785288F059B00D73E22 /* SettingsViewController.xib in Resources */,
@@ -324,10 +335,11 @@
 				A5B4A0DC2863440D0015A64A /* Settings.swift in Sources */,
 				A5B4A0E8287078260015A64A /* DataManager.swift in Sources */,
 				A5B4A0D02860DAD20015A64A /* Rocket.swift in Sources */,
+				A59E878C28928F6700D73E22 /* Сoordinator.swift in Sources */,
 				A5EEEACF28538B790040724F /* MainViewController.swift in Sources */,
 				A5B4A10B288B2ED60015A64A /* LaunchListPresenter.swift in Sources */,
 				A59E877F288F00E900D73E22 /* SettingsPresenter.swift in Sources */,
-				A5B4A0DA28622E1D0015A64A /* CustomCollectionViewCell.swift in Sources */,
+				A5B4A0DA28622E1D0015A64A /* UnitCollectionViewCell.swift in Sources */,
 				A5EEEACB28538B790040724F /* AppDelegate.swift in Sources */,
 				A5EEEACD28538B790040724F /* SceneDelegate.swift in Sources */,
 				A5B4A0CE285E185E0015A64A /* NetworkManager.swift in Sources */,

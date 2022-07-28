@@ -8,13 +8,13 @@ struct Settings: Codable {
 }
 
 enum UnitOfWeight: String, Codable {
-    case kg = ", kg"
-    case lb = ", lb"
+    case kg = "kg"
+    case lb = "lb"
 }
 
 enum UnitOfLength: String, Codable {
-    case meters = ", m"
-    case feet = ", ft"
+    case meters = "m"
+    case feet = "ft"
 }
 
 enum RocketParameters: String, CaseIterable  {

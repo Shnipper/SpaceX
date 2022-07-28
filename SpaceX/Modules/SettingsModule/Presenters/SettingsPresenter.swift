@@ -5,9 +5,10 @@ protocol SettingsViewControllerProtocol: AnyObject {
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-    init(settingsManager: SettingsManagerProtocol)
+    init(settingsManager: SettingsManagerProtocol, delegate: MainPresenterDelegate)
     
     var view: SettingsViewControllerProtocol? { get set }
+    var delegate: MainPresenterDelegate { get }
     
     func saveSettings(_ hightSelectedSegment: Int,
                       _ diameterSelectedSegment: Int,
@@ -23,11 +24,13 @@ protocol SettingsPresenterProtocol: AnyObject {
 class SettingsPresenter: SettingsPresenterProtocol {
   
     weak var view: SettingsViewControllerProtocol?
-    
     var settingsManager: SettingsManagerProtocol
+    var delegate: MainPresenterDelegate
     
-    required init(settingsManager: SettingsManagerProtocol) {
+    required init(settingsManager: SettingsManagerProtocol,
+                  delegate: MainPresenterDelegate) {
         self.settingsManager = settingsManager
+        self.delegate = delegate
     }
     
     func getHightIndex() -> Int {
