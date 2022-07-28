@@ -27,8 +27,11 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         segmentedControls.forEach { customise($0) }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configure()
     }
     
@@ -46,7 +49,6 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     }
     
     private func saveSettings() {
-        
         presenter.saveSettings(heightSegmentedControl.selectedSegmentIndex,
                                diameterSegmentedControl.selectedSegmentIndex,
                                massSegmentedControl.selectedSegmentIndex,

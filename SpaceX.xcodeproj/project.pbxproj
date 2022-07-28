@@ -95,6 +95,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		A59E878D2892E13000D73E22 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A5EEEAD328538B7A0040724F /* Assets.xcassets */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A5B4A0DD286346B60015A64A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +137,7 @@
 				A5EEEACC28538B790040724F /* SceneDelegate.swift */,
 				A5B4A103288AC15B0015A64A /* ModuleBuilder.swift */,
 				A59E878B28928F6700D73E22 /* Сoordinator.swift */,
+				A5EEEAD828538B7A0040724F /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -249,8 +258,7 @@
 				A59E878A289289C900D73E22 /* Modules */,
 				A5B4A0DD286346B60015A64A /* Services */,
 				A5B4A0DF2865AB610015A64A /* Storyboards */,
-				A5EEEAD328538B7A0040724F /* Assets.xcassets */,
-				A5EEEAD828538B7A0040724F /* Info.plist */,
+				A59E878D2892E13000D73E22 /* Helpers */,
 			);
 			path = SpaceX;
 			sourceTree = "<group>";
@@ -489,7 +497,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B346NGGCL4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpaceX/Info.plist;
+				INFOPLIST_FILE = SpaceX/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -518,7 +526,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B346NGGCL4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpaceX/Info.plist;
+				INFOPLIST_FILE = SpaceX/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

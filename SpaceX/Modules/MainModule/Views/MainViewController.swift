@@ -34,7 +34,10 @@ final class MainViewController: UIViewController, MainViewControllerProtocol {
     @IBOutlet var secondTimeToBurn: UILabel!
     
     @IBAction func launchButtonPressed() {
-        let launchListVC = ModuleBuilder.createLaunchList(with: presenter.getCurrentRocketID, and: presenter.getCurrentRocketName)
+        let builder = ModuleBuilder()
+        let launchListVC = builder.createLaunchListModule(
+            rocketID: presenter.getCurrentRocketID,
+            rocketName: presenter.getCurrentRocketName)
         navigationController?.pushViewController(launchListVC, animated: true)
     }
     
@@ -103,7 +106,10 @@ final class MainViewController: UIViewController, MainViewControllerProtocol {
     
     private func customiseNavigationController() {
         navigationController?.navigationBar.barTintColor = .black
-        let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "Назад",
+                                         style: UIBarButtonItem.Style.plain,
+                                         target: nil,
+                                         action: nil)
         self.navigationItem.backBarButtonItem = backButton
     }
     
@@ -123,14 +129,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("back")
         
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "UnitCollectionViewCell",
             for: indexPath
         ) as? UnitCollectionViewCell else { return UICollectionViewCell() }
-        
-        print("back with cell")
         
         cell.configure(with: presenter.getRocketDetailInfo(by: indexPath.row))
         

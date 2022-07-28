@@ -152,7 +152,6 @@ class MainPresenter: MainPresenterProtocol {
         }
     }
     
-    
     private func timeBurnSec(_ stage: Stage) -> String {
         guard let timeToBurn = stage.burnTimeSec else { return " " }
         return "\(timeToBurn)"

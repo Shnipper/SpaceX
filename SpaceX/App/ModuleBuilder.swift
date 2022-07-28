@@ -2,7 +2,7 @@ import UIKit
 
 protocol ModuleBuilderProtocol: AnyObject {
     static func createMainModule() -> UIViewController
-    static func createLaunchList(with rocketID: String?, and rocketName: String?) -> UIViewController
+    func createLaunchListModule(rocketID: String?, rocketName: String?) -> UIViewController
     static func createSettingsModule(with delegate: MainPresenterDelegate) -> UIViewController
 }
 
@@ -20,7 +20,7 @@ class ModuleBuilder: ModuleBuilderProtocol {
 
     }
 
-    static func createLaunchList(with rocketID: String?, and rocketName: String?) -> UIViewController {
+    func createLaunchListModule(rocketID: String?, rocketName: String?) -> UIViewController {
         
         let networkManager = NetworkManager.shared
         let dataManager = DataManager.shared
