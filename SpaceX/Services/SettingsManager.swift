@@ -15,7 +15,6 @@ final class SettingsManager: SettingsManagerProtocol {
                                    mass: .lb,
                                    payloadWeight: .lb)
     
-    
     private init () {}
     
     var settings: Settings {

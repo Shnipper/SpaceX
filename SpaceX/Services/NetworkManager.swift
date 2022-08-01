@@ -1,8 +1,8 @@
 import Foundation
 
-enum Link: String {
-    case rocketDetails = "https://api.spacexdata.com/v4/rockets"
-    case launches = "https://api.spacexdata.com/v4/launches"
+enum Link {
+    static let rocketDetails = "https://api.spacexdata.com/v4/rockets"
+    static let launches = "https://api.spacexdata.com/v4/launches"
 }
 
 enum NetworkError: Error {
@@ -14,9 +14,9 @@ enum NetworkError: Error {
 protocol NetworkManagerProtocol {
     
     static var shared: NetworkManager { get }
-    func fetchRocketData(with completion: @escaping([Rocket]) -> Void)
+    func fetchRocketData(with completion: @escaping(Result<[Rocket], NetworkError>) -> Void)
     func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
-    func fetchLaunchesData(with completion: @escaping([Launch]) -> Void)
+    func fetchLaunchesData(with completion: @escaping(Result<[Launch], NetworkError>) -> Void)
 //    func fetchData<T:Decodable>(by link: String,
 //                                with completion: @escaping(Result<T, NetworkError>) -> Void)
 }
@@ -26,11 +26,13 @@ final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     
-    func fetchRocketData(with completion: @escaping([Rocket]) -> Void) {
-        guard let url = URL(string: Link.rocketDetails.rawValue) else { return }
+    func fetchRocketData(with completion: @escaping(Result<[Rocket], NetworkError>) -> Void) {
+        guard let url = URL(string: Link.rocketDetails) else {
+            completion(.failure(.invalidURL))
+            return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
+                completion(.failure(.noData))
                 return
             }
             do {
@@ -38,10 +40,10 @@ final class NetworkManager: NetworkManagerProtocol {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let rockets = try decoder.decode([Rocket].self, from: data)
                 DispatchQueue.main.async {
-                    completion(rockets)
+                    completion(.success(rockets))
                 }
-            } catch let error {
-                print(error)
+            } catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
     }
@@ -64,12 +66,14 @@ final class NetworkManager: NetworkManagerProtocol {
         }
     }
     
-    func fetchLaunchesData(with completion: @escaping([Launch]) -> Void) {
-        guard let url = URL(string: Link.launches.rawValue) else { return }
+    func fetchLaunchesData(with completion: @escaping(Result<[Launch], NetworkError>) -> Void) {
+        guard let url = URL(string: Link.launches) else {
+            completion(.failure(.invalidURL))
+            return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
+                completion(.failure(.noData))
                 return
             }
             
@@ -78,10 +82,10 @@ final class NetworkManager: NetworkManagerProtocol {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let launches = try decoder.decode([Launch].self, from: data)
                 DispatchQueue.main.async {
-                    completion(launches)
+                    completion(.success(launches))
                 }
-            }   catch let error {
-                print(error)
+            }   catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
     }

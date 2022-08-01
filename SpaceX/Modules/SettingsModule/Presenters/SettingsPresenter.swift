@@ -40,9 +40,11 @@ class SettingsPresenter: SettingsPresenterProtocol {
     func getDiameterIndex() -> Int {
         settingsManager.settings.diameter == .meters ? 0 : 1
     }
+    
     func getMassIndex() -> Int {
         settingsManager.settings.mass == .kg ? 0 : 1
     }
+    
     func getPayloadWeightIndex() -> Int {
         settingsManager.settings.payloadWeight == .kg ? 0 : 1
     }

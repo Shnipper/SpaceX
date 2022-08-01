@@ -63,12 +63,17 @@ class MainPresenter: MainPresenterProtocol {
         if !dataManager.rockets.isEmpty {
             rocket = dataManager.rockets[index]
         } else {
-            networkManager.fetchRocketData { [weak self] rockets in
-                self?.dataManager.rockets = rockets
-                self?.rocket = self?.dataManager.rockets[index]
-                
-                guard let pageCount = self?.dataManager.rockets.count else { return }
-                self?.view?.update(pageCount: pageCount)
+            networkManager.fetchRocketData { [weak self] result in
+                switch result {
+                case .success(let rockets):
+                    self?.dataManager.rockets = rockets
+                    self?.rocket = self?.dataManager.rockets[index]
+                    if let pageCount = self?.dataManager.rockets.count {
+                        self?.view?.update(pageCount: pageCount)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }

@@ -59,11 +59,16 @@ class LaunchListPresenter: LaunchListPresenterProtocol {
         if !dataManager.launches.isEmpty {
             launches = dataManager.getCurrentLaunches(with: rocketID)
         } else {
-            networkManager.fetchLaunchesData { [weak self] launches in
-                self?.dataManager.launches = launches
-                if let id = self?.rocketID {
-                    self?.launches = self?.dataManager.getCurrentLaunches(with: id)
-                    self?.view?.updateUI()
+            networkManager.fetchLaunchesData { [weak self] result in
+                switch result {
+                case .success(let launches):
+                    self?.dataManager.launches = launches
+                    if let id = self?.rocketID {
+                        self?.launches = self?.dataManager.getCurrentLaunches(with: id)
+                        self?.view?.updateUI()
+                    }
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
