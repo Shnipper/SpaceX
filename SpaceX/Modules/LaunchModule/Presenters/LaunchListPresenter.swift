@@ -20,7 +20,7 @@ protocol LaunchListPresenterProtocol: AnyObject {
     func getLaunchInfo(from index: Int) -> LaunchInfo?
 }
 
-class LaunchListPresenter: LaunchListPresenterProtocol {
+final class LaunchListPresenter: LaunchListPresenterProtocol {
     
     let networkManager: NetworkManagerProtocol
     var dataManager: DataManagerProtocol

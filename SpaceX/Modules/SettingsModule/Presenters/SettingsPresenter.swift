@@ -25,7 +25,7 @@ protocol SettingsPresenterProtocol: AnyObject {
     func backButtonPressed()
 }
 
-class SettingsPresenter: SettingsPresenterProtocol {
+final class SettingsPresenter: SettingsPresenterProtocol {
   
     weak var view: SettingsViewControllerProtocol?
     var settingsManager: SettingsManagerProtocol

@@ -23,9 +23,6 @@ protocol NetworkManagerProtocol {
     
     func fetchLaunchesData(with completion: @escaping(
         Result<[Launch], NetworkError>) -> Void)
-    
-//    func fetchData<T:Decodable>(by link: String,
-//                                with completion: @escaping(Result<T, NetworkError>) -> Void)
 }
 
 
@@ -94,37 +91,10 @@ final class NetworkManager: NetworkManagerProtocol {
                 DispatchQueue.main.async {
                     completion(.success(launches))
                 }
-            }   catch {
+            } catch {
                 completion(.failure(.decodingError))
             }
         }.resume()
     }
-    
-//    func fetchData<T:Decodable>(by link: String,
-//                                with completion: @escaping(Result<T, NetworkError>) -> Void) {
-//
-//        guard let url = URL(string: link) else {
-//            completion(.failure(.invalidURL))
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            guard let data = data else {
-//                completion(.failure(.noData))
-//                return
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let value = try decoder.decode(T.self, from: data)
-//                DispatchQueue.main.async {
-//                    completion(.success(value))
-//                }
-//            } catch {
-//                completion(.failure(.decodingError))
-//            }
-//        }.resume()
-//    }
 }
 

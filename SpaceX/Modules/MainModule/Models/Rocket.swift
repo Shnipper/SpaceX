@@ -5,7 +5,8 @@ struct Rocket: Decodable {
     /* JSON
      
      "name":            "Falcon 1"
-     "flickr_images":   ["https://imgur.com/DaCfMsj.jpg","https://imgur.com/azYafd8.jpg"]
+     "flickr_images":   ["https://imgur.com/DaCfMsj.jpg",
+                        "https://imgur.com/azYafd8.jpg"]
      "id":              "5e9d0d95eda69955f709d1eb"
      "height":          {"meters":22.25,
                         "feet":73}

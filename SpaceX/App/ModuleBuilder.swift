@@ -7,7 +7,7 @@ protocol ModuleBuilderProtocol: AnyObject {
                               output: SettingsOutputProtocol) -> UIViewController
 }
 
-class ModuleBuilder: ModuleBuilderProtocol {
+final class ModuleBuilder: ModuleBuilderProtocol {
     
     func createMainModule(output: MainOutputProtocol)  -> UIViewController {
         let networkManager = NetworkManager.shared

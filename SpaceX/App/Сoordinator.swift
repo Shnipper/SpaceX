@@ -3,7 +3,6 @@ import UIKit
 
 protocol CoordinatorProtocol {
     init(moduleBuilder: ModuleBuilderProtocol)
-    
     func start(_ window: UIWindow)
 }
 

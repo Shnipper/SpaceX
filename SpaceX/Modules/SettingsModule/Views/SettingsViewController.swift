@@ -1,6 +1,7 @@
 import UIKit
 
-class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
+final class SettingsViewController: UIViewController,
+                                    SettingsViewControllerProtocol {
     
     let presenter: SettingsPresenterProtocol
     

@@ -30,7 +30,7 @@ protocol MainPresenterProtocol: MainPresenterDelegate {
     func launchButtonPressed()
 }
 
-class MainPresenter: MainPresenterProtocol {
+final class MainPresenter: MainPresenterProtocol {
     
     weak var view: MainViewControllerProtocol?
     var output: MainOutputProtocol?
@@ -70,20 +70,13 @@ class MainPresenter: MainPresenterProtocol {
                 case .success(let rockets):
                     self?.dataManager.rockets = rockets
                     self?.rocket = self?.dataManager.rockets[index]
-                    if let pageCount = self?.dataManager.rockets.count {
-                        self?.view?.update(pageCount: pageCount)
-                    }
+                    self?.updatePageControl()
                 case .failure(let error):
                     print(error)
                 }
             }
         }
     }
-    
-//    private func updatePageControl() {
-//        let pageCount = self.dataManager.rockets.count
-//        self.view?.update(pageCount: pageCount)
-//    }
     
     func getRocketDetailInfo(by index: Int) -> RocketDetailInfo? {
         guard let rocket = rocket else { return nil }
@@ -132,6 +125,11 @@ class MainPresenter: MainPresenterProtocol {
     func launchButtonPressed() {
         output?.moveToLaunchList(rocketID: rocket?.id,
                                  rocketName: rocket?.name)
+    }
+    
+    private func updatePageControl() {
+        let pageCount = self.dataManager.rockets.count
+        self.view?.update(pageCount: pageCount)
     }
     
     private func updateRocketMainInfo() {
