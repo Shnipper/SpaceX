@@ -1,20 +1,22 @@
 import UIKit
 
 protocol ModuleBuilderProtocol: AnyObject {
-    static func createMainModule() -> UIViewController
+    func createMainModule(output: MainOutputProtocol) -> UIViewController
     func createLaunchListModule(rocketID: String?, rocketName: String?) -> UIViewController
-    static func createSettingsModule(with delegate: MainPresenterDelegate) -> UIViewController
+    func createSettingsModule(with delegate: MainPresenterDelegate,
+                              output: SettingsOutputProtocol) -> UIViewController
 }
 
 class ModuleBuilder: ModuleBuilderProtocol {
     
-    static func createMainModule() -> UIViewController {
+    func createMainModule(output: MainOutputProtocol)  -> UIViewController {
         let networkManager = NetworkManager.shared
         let settingsManager = SettingsManager.shared
         let dataManager = DataManager.shared
         let presenter = MainPresenter(networkManager: networkManager,
                                       settingsManager: settingsManager,
-                                      dataManager: dataManager)
+                                      dataManager: dataManager,
+                                      output: output)
         let view = MainViewController(presenter: presenter)
         return view
 
@@ -33,10 +35,13 @@ class ModuleBuilder: ModuleBuilderProtocol {
         return view
     }
 
-    static func createSettingsModule(with delegate: MainPresenterDelegate) -> UIViewController {
+    func createSettingsModule(with delegate: MainPresenterDelegate,
+                              output: SettingsOutputProtocol) -> UIViewController {
         
         let settingsManager = SettingsManager.shared
-        let presenter = SettingsPresenter(settingsManager: settingsManager, delegate: delegate)
+        let presenter = SettingsPresenter(settingsManager: settingsManager,
+                                          delegate: delegate,
+                                          output: output)
         let view = SettingsViewController(presenter: presenter)
         return view
     }

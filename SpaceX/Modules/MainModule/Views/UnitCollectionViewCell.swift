@@ -11,5 +11,3 @@ final class UnitCollectionViewCell: UICollectionViewCell {
         unitLabel.text = rocketDetailInfo.unit
     }
 }
-
-

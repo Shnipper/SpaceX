@@ -5,10 +5,13 @@ protocol SettingsViewControllerProtocol: AnyObject {
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-    init(settingsManager: SettingsManagerProtocol, delegate: MainPresenterDelegate)
+    init(settingsManager: SettingsManagerProtocol,
+         delegate: MainPresenterDelegate,
+         output: SettingsOutputProtocol)
     
     var view: SettingsViewControllerProtocol? { get set }
     var delegate: MainPresenterDelegate { get }
+    var output: SettingsOutputProtocol { get }
     
     func saveSettings(_ hightSelectedSegment: Int,
                       _ diameterSelectedSegment: Int,
@@ -19,6 +22,7 @@ protocol SettingsPresenterProtocol: AnyObject {
     func getDiameterIndex() -> Int
     func getMassIndex() -> Int
     func getPayloadWeightIndex() -> Int
+    func backButtonPressed()
 }
 
 class SettingsPresenter: SettingsPresenterProtocol {
@@ -26,11 +30,14 @@ class SettingsPresenter: SettingsPresenterProtocol {
     weak var view: SettingsViewControllerProtocol?
     var settingsManager: SettingsManagerProtocol
     var delegate: MainPresenterDelegate
+    var output: SettingsOutputProtocol
     
     required init(settingsManager: SettingsManagerProtocol,
-                  delegate: MainPresenterDelegate) {
+                  delegate: MainPresenterDelegate,
+                  output: SettingsOutputProtocol) {
         self.settingsManager = settingsManager
         self.delegate = delegate
+        self.output = output
     }
     
     func getHightIndex() -> Int {
@@ -61,5 +68,9 @@ class SettingsPresenter: SettingsPresenterProtocol {
             payloadWeight: payloadWeightSelectedSegment == 0 ? .kg : .lb)
         
         settingsManager.settings = settings
+    }
+    
+    func backButtonPressed() {
+        output.moveBack()
     }
 }

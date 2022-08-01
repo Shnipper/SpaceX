@@ -14,9 +14,16 @@ enum NetworkError: Error {
 protocol NetworkManagerProtocol {
     
     static var shared: NetworkManager { get }
-    func fetchRocketData(with completion: @escaping(Result<[Rocket], NetworkError>) -> Void)
-    func fetchImage(from url: String?, with completion: @escaping(Result<Data, NetworkError>) -> Void)
-    func fetchLaunchesData(with completion: @escaping(Result<[Launch], NetworkError>) -> Void)
+    
+    func fetchRocketData(with completion: @escaping(
+        Result<[Rocket], NetworkError>) -> Void)
+    
+    func fetchImage(from url: String?, with completion: @escaping(
+        Result<Data, NetworkError>) -> Void)
+    
+    func fetchLaunchesData(with completion: @escaping(
+        Result<[Launch], NetworkError>) -> Void)
+    
 //    func fetchData<T:Decodable>(by link: String,
 //                                with completion: @escaping(Result<T, NetworkError>) -> Void)
 }
@@ -26,7 +33,8 @@ final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     
-    func fetchRocketData(with completion: @escaping(Result<[Rocket], NetworkError>) -> Void) {
+    func fetchRocketData(with completion: @escaping(Result<[Rocket],
+                                                    NetworkError>) -> Void) {
         guard let url = URL(string: Link.rocketDetails) else {
             completion(.failure(.invalidURL))
             return }
@@ -49,7 +57,8 @@ final class NetworkManager: NetworkManagerProtocol {
     }
     
     func fetchImage(from url: String?,
-                           with completion: @escaping(Result<Data, NetworkError>) -> Void) {
+                           with completion: @escaping(Result<Data,
+                                                      NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else {
             completion(.failure(.invalidURL))
             return
@@ -66,7 +75,8 @@ final class NetworkManager: NetworkManagerProtocol {
         }
     }
     
-    func fetchLaunchesData(with completion: @escaping(Result<[Launch], NetworkError>) -> Void) {
+    func fetchLaunchesData(with completion: @escaping(Result<[Launch],
+                                                      NetworkError>) -> Void) {
         guard let url = URL(string: Link.launches) else {
             completion(.failure(.invalidURL))
             return }

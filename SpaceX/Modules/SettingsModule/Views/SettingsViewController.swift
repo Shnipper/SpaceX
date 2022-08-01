@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     @IBOutlet var segmentedControls: [UISegmentedControl]!
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        presenter.backButtonPressed()
     }
 
     override func viewDidLoad() {

@@ -34,16 +34,11 @@ final class MainViewController: UIViewController, MainViewControllerProtocol {
     @IBOutlet var secondTimeToBurn: UILabel!
     
     @IBAction func launchButtonPressed() {
-        let builder = ModuleBuilder()
-        let launchListVC = builder.createLaunchListModule(
-            rocketID: presenter.getCurrentRocketID,
-            rocketName: presenter.getCurrentRocketName)
-        navigationController?.pushViewController(launchListVC, animated: true)
+        presenter.launchButtonPressed()
     }
     
     @IBAction func settingsButtonPressed() {
-        let settingsVC = ModuleBuilder.createSettingsModule(with: presenter)
-        navigationController?.present(settingsVC, animated: true)
+        presenter.settingsButtonPressed()
     }
     
     override func viewDidLoad() {

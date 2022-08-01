@@ -17,26 +17,26 @@ protocol MainPresenterProtocol: MainPresenterDelegate {
     
     init(networkManager: NetworkManagerProtocol,
          settingsManager: SettingsManagerProtocol,
-         dataManager: DataManagerProtocol)
+         dataManager: DataManagerProtocol,
+         output: MainOutputProtocol)
     
     var view: MainViewControllerProtocol? { get set }
-    
-    var getCurrentRocketID: String? { get }
-    var getCurrentRocketName: String? { get }
+    var output: MainOutputProtocol? { get }
     
     func getRocketDetailInfo(by index: Int) -> RocketDetailInfo?
     func updateRocket(by index: Int)
+    
+    func settingsButtonPressed()
+    func launchButtonPressed()
 }
 
 class MainPresenter: MainPresenterProtocol {
     
     weak var view: MainViewControllerProtocol?
+    var output: MainOutputProtocol?
     let networkManager: NetworkManagerProtocol
     let settingsManager: SettingsManagerProtocol
     var dataManager: DataManagerProtocol
-    
-    var getCurrentRocketID: String? { rocket?.id }
-    var getCurrentRocketName: String? { rocket?.name }
     
     private var rocket: Rocket? {
         didSet {
@@ -48,11 +48,13 @@ class MainPresenter: MainPresenterProtocol {
     
     required init(networkManager: NetworkManagerProtocol,
                   settingsManager: SettingsManagerProtocol,
-                  dataManager: DataManagerProtocol) {
+                  dataManager: DataManagerProtocol,
+                  output: MainOutputProtocol) {
         
         self.networkManager = networkManager
         self.settingsManager = settingsManager
         self.dataManager = dataManager
+        self.output = output
     }
     
     func updateRocketDetailInfo() {
@@ -77,6 +79,11 @@ class MainPresenter: MainPresenterProtocol {
             }
         }
     }
+    
+//    private func updatePageControl() {
+//        let pageCount = self.dataManager.rockets.count
+//        self.view?.update(pageCount: pageCount)
+//    }
     
     func getRocketDetailInfo(by index: Int) -> RocketDetailInfo? {
         guard let rocket = rocket else { return nil }
@@ -116,6 +123,15 @@ class MainPresenter: MainPresenterProtocol {
         }
         
         return RocketDetailInfo(parameterTitle: parameterTitle, unit: unit)
+    }
+    
+    func settingsButtonPressed() {
+        output?.moveToSettings(self)
+    }
+    
+    func launchButtonPressed() {
+        output?.moveToLaunchList(rocketID: rocket?.id,
+                                 rocketName: rocket?.name)
     }
     
     private func updateRocketMainInfo() {
