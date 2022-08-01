@@ -9,7 +9,7 @@ final class SettingsManager: SettingsManagerProtocol {
     
     static let shared = SettingsManager()
     
-    private let key = "Settings"
+    private let settingsKey = "Settings"
     private let defaultSettings = Settings(height: .feet,
                                    diameter: .feet,
                                    mass: .lb,
@@ -19,7 +19,7 @@ final class SettingsManager: SettingsManagerProtocol {
     
     var settings: Settings {
         get {
-            guard let savedSettings = UserDefaults.standard.object(forKey: key) as? Data,
+            guard let savedSettings = UserDefaults.standard.object(forKey: settingsKey) as? Data,
                   let settings = try? JSONDecoder().decode(Settings.self, from: savedSettings) else {
                 return defaultSettings
             }
@@ -27,7 +27,7 @@ final class SettingsManager: SettingsManagerProtocol {
         } set {
 
             guard let encodedSettings = try? JSONEncoder().encode(newValue) else { return }
-            UserDefaults.standard.set(encodedSettings, forKey: key)
+            UserDefaults.standard.set(encodedSettings, forKey: settingsKey)
         }
     }
 }
